@@ -3,7 +3,7 @@ const heroProjects = [
     { title:"Home", img:"images/Background.jpg", role:"Sphesihle Shezi", stack:"Full-Stack Developer", desc:"I build user friendly database driven web applications using modern frameworks such as ASP.NET. See projects below to explore my work and skills in action." },
     { title:"Ward Management", img:"images/Project1.PNG", role:"HealthCare System", stack:"ASP.NET MVC · C# · SQL Server", desc:"Hospital ward management with role-based auth and optimized queries." },
     { title:"Online Shopping", img:"images/Project2.PNG", role:"E‑Commerce Platform", stack:"ASP.NET · Dapper · JavaScript", desc:"Responsive shopping site with cart and checkout." },
-    { title:"Hotel Booking", img:"images/Project3.PNG", role:"Reservation System", stack:"ASP.NET · Dapper · SQL Server", desc:"Booking validation and availability tracking; 50% fewer conflicts." }
+    { title:"Hotel Booking", img:"images/Project3.png", role:"Reservation System", stack:"ASP.NET · Dapper · SQL Server", desc:"Booking validation and availability tracking; 50% fewer conflicts." }
   ];
   
   let heroIndex = 0;
