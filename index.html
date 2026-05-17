@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/>
+  <title>Sphesihle Shezi | Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!--  NAVIGATION -->
+  <nav>
+    <h1> <div class="education-image">
+        <img src="images/Sphesihle.jpeg" alt=" Sphesihle Shezi" />
+      </div></h1>
+    <ul>
+      <li onclick="go('hero')">Home</li>
+      <li onclick="go('aboutSkills')">About & Skills</li>
+      <li onclick="go('projects')">Projects</li>
+      <li onclick="go('education')">Education</li>
+      <li onclick="go('certificates')">Certificates</li>
+      <li onclick="go('contact')">Contact</li>
+    </ul>
+  </nav>
+
+  <!-- HERO + CAROUSEL -->
+  <div class="hero" id="hero">
+    <div class="hero-left">
+      <h2>Hey, I'm Sphesihle Shezi</h2>
+      <div class="role" id="dynamicRole">Graduate Software Developer</div>
+      <div class="stack" id="dynamicStack">ASP.NET MVC • C# • SQL Server • JavaScript • HTML/CSS</div>
+      <p class="project-description" id="dynamicDescription">I build innovative, database-driven web applications with a focus on clean architecture and user experience. <b>
+      See my projects below to explore my work and skills in action.
+      
+      </p>
+     
+    </div>
+
+    <div class="carousel-widget" id="heroCarousel">
+      <button class="arrow left-arrow" onclick="moveHero(-1)">&#10094;</button>
+      <div class="carousel" id="heroCarouselInner"></div>
+      <button class="arrow right-arrow" onclick="moveHero(1)">&#10095;</button>
+    </div>
+  </div>
+
+  <!-- ABOUT & SKILLS -->
+  <section class="section" id="aboutSkills">
+    <h2>About & Skills</h2>
+    <div class="about-text">
+      IT Graduate with a Diploma in Information Technology (Software Development) and hands-on experience building database-driven systems using SQL Server, C#, and ASP.NET. Oracle Cloud Database Certified with a strong foundation in databases, scripting (Python, C#, JavaScript), and system logic. Eager to apply analytical thinking and problem-solving to server monitoring, infrastructure support, and IT operations.
+    </div>
+
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h3>Software Development</h3>
+        <ul>
+          <li>OOP, REST APIs, Authentication</li>
+          <li>Debugging, TDD, Agile Practices</li>
+          <li>Responsive Web Design</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3>Languages & Web</h3>
+        <ul>
+          <li>C#, JavaScript, Python, SQL</li>
+          <li>HTML5, CSS3</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3>Databases & Cloud</h3>
+        <ul>
+          <li>SQL Server, MySQL</li>
+          <li>Oracle Cloud Infrastructure (OCI)</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3>Frameworks & Tools</h3>
+        <ul>
+          <li>ASP.NET MVC, Dapper, Entity Framework</li>
+          <li>Bootstrap, Git & GitHub</li>
+          <li>Visual Studio, SSMS</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3>Professional</h3>
+        <ul>
+          <li>Problem Solving, Critical Thinking</li>
+          <li>Team Collaboration, Communication</li>
+          <li>Time Management, Adaptability</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS SECTION -->
+  <section class="section" id="projects">
+    <h2>Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <h3>Ward Management System</h3>
+        <div class="tech">ASP.NET MVC • C# • SQL Server • Entity Framework</div>
+        <p>Hospital ward system for admissions, transfers, discharges. Role-based auth, 40% faster queries, 45% workflow improvement.</p>
+        <a href="https://github.com/sphesihle1017/HealthOpsHospital" target="_blank" class="project-link">View on GitHub →</a>
+      </div>
+      <div class="project-card">
+        <h3>Online Shopping System</h3>
+        <div class="tech">ASP.NET MVC • C# • SQL Server • Dapper • JavaScript</div>
+        <p>Responsive e‑commerce platform with product catalog, cart, and checkout. Focused on UX and performance.</p>
+        <a href="https://github.com/sphesihle1017/myshop-order-management-system" target="_blank" class="project-link">View on GitHub →</a>
+      </div>
+      <div class="project-card">
+        <h3>Hotel Booking System</h3>
+        <div class="tech">ASP.NET MVC • C# • Dapper • SQL Server</div>
+        <p>Booking validation & availability tracking. 50% fewer conflicts, 35% faster DB with Dapper.</p>
+        <a href="https://github.com/sphesihle1017/Azure-Hotel" target="_blank" class="project-link">View on GitHub →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION SECTION -->
+  <section class="section" id="education">
+    <h2>Education</h2>
+    <div class="education-content">
+      <div class="education-text">
+        <div class="education-item">
+          <h3>Diploma in Information Technology (Software Development)</h3>
+          <div class="meta">Nelson Mandela University | 2022 – 2025 | Gqeberha</div>
+          <p>Distinctions: Development Software III (C#), Information Systems 1A, Systems Software: IT Essentials, Project Best Practices</p>
+        </div>
+        <div class="education-item">
+          <h3>Matric (National Senior Certificate)</h3>
+          <div class="meta">Nomaswazi High School | 2020 | Pietermaritzburg</div>
+        </div>
+      </div>
+     
+    </div>
+  </section>
+  
+
+  <!-- CERTIFICATES SECTION -->
+  <section class="section certificates-section" id="certificates">
+    <h2>Certificates</h2>
+
+    <div class="section-carousel" id="certsCarousel">
+      <button class="arrow left-arrow" onclick="moveCerts(-1)">&#10094;</button>
+      <div class="carousel" id="certsCarouselInner"></div>
+      <button class="arrow right-arrow" onclick="moveCerts(1)">&#10095;</button>
+    </div>
+    <div class="carousel-description" id="certsDescription">
+      Oracle Cloud Database Professional 2025<br/>
+      <a href="https://catalog-education.oracle.com/pls/certview/sharebadge?id=E1805F30B43188A5777BA9B2A58676523F1C5C5DFD6257BDCE929D45E92ADAB2" target="_blank" class="cert-link">Verify credential →</a>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section class="section" id="contact">
+    <h2>Contact</h2>
+    <p style="color:#5c5348;">Feel free to reach out.</p>
+    <div class="contact-links">
+      <span>📧 sphesihlesbani@gmail.com</span>
+      <span>📞 071 566 4834</span>
+      <a href="https://linkedin.com/in/sphesihleshezi1017" target="_blank">LinkedIn</a>
+      <a href="https://github.com/sphesihle1017" target="_blank">GitHub</a>
+      <span>📍Johanesburg, Gauteng / Pietermaritzburg, KwaZulu Natal</span>
+      <span>🚗 Code 10</span>
+    </div>
+  </section>
+
+  <footer>© 2025 Sphesihle Shezi</footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
