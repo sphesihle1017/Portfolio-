@@ -516,26 +516,36 @@ footer {
   border-top: 1px solid rgba(168, 152, 128, 0.3);
 }
 
+/* Hide hamburger by default */
+.hamburger {
+  display: none;
+  font-size: 1.6rem;
+  background: none;
+  border: none;
+  color: var(--text-dark);
+  cursor: pointer;
+}
+
+/* Mobile styles */
 @media (max-width: 700px) {
-  .hero {
-    padding: 0 25px;
+  .hamburger {
+    display: block;
   }
-  nav {
-    padding: 15px 25px;
+  .nav-links {
+    position: absolute;
+    top: 65px;
+    left: 0;
+    width: 100%;
+    background: rgba(245, 239, 230, 0.95);
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 0;
+    display: none; /* hidden by default */
   }
-  .hero-left h2 {
-    font-size: 32px;
-  }
-  .carousel-widget {
-    width: 260px;
-    height: 140px;
-    bottom: 20px;
-    right: 20px;
-  }
-  .section {
-    padding: 60px 25px;
-  }
-  .skills-grid {
-    grid-template-columns: 1fr;
+  .nav-links.active {
+    display: flex; /* show when toggled */
   }
 }
+
+
