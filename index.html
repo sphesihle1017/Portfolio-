@@ -3,7 +3,54 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/>
-  <title>Sphesihle Shezi | Portfolio</title>
+
+  <!-- ===== SEO & META TAGS ===== -->
+  <title>Sphesihle Shezi | Graduate Software Developer Portfolio</title>
+  <meta name="description" content="Portfolio of Sphesihle Shezi – Graduate Software Developer skilled in ASP.NET MVC, C#, SQL Server, and cloud databases. Explore projects, certificates, and contact info." />
+  <meta name="keywords" content="Sphesihle Shezi, software developer, portfolio, ASP.NET MVC, C#, SQL Server, Oracle Cloud, web developer, graduate developer" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://sphesihlesportfolio.vercel.app/" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Sphesihle Shezi | Software Developer Portfolio" />
+  <meta property="og:description" content="Graduate software developer with hands‑on experience in ASP.NET MVC, C#, SQL Server. View projects and skills." />
+  <meta property="og:image" content="https://https://sphesihlesportfolio.vercel.app/images/Sphesihle.jpeg" />
+  <meta property="og:url" content="https://https://sphesihlesportfolio.vercel.app/" />
+  <meta property="og:site_name" content="Sphesihle Shezi Portfolio" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Sphesihle Shezi | Software Developer Portfolio" />
+  <meta name="twitter:description" content="Graduate software developer with hands‑on experience in ASP.NET MVC, C#, SQL Server. View projects and skills." />
+  <meta name="twitter:image" content="https://sphesihlesportfolio.vercel.app/images/Sphesihle.jpeg" />
+
+  <!-- Structured Data (JSON‑LD) – Person schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Sphesihle Shezi",
+    "alternateName": "Sphesihle",
+    "jobTitle": "Graduate Software Developer",
+    "url": "https://sphesihlesportfolio.vercel.app.com",
+    "image": "https://sphesihlesportfolio.vercel.app/images/Sphesihle.jpeg",
+    "sameAs": [
+      "https://linkedin.com/in/sphesihleshezi1017",
+      "https://github.com/sphesihle1017"
+    ],
+    "knowsAbout": [
+      "Software Development",
+      "ASP.NET MVC",
+      "C#",
+      "SQL Server",
+      "Oracle Cloud",
+      "JavaScript"
+    ],
+    "description": "Graduate software developer with a Diploma in IT (Software Development) and experience building database-driven web applications."
+  }
+  </script>
+
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -11,6 +58,8 @@
   <!--  NAVIGATION -->
   <nav>
     <h1>
+      <!-- semantic text for screen readers + search engines, visually hidden via CSS if needed -->
+      
       <div class="education-image">
         <img src="images/Sphesihle.jpeg" alt="Sphesihle Shezi" />
       </div>
@@ -25,7 +74,6 @@
       <li onclick="go('contact')">Contact</li>
     </ul>
   </nav>
-  
 
   <!-- HERO + CAROUSEL -->
   <div class="hero" id="hero">
@@ -35,9 +83,7 @@
       <div class="stack" id="dynamicStack">ASP.NET MVC • C# • SQL Server • JavaScript • HTML/CSS</div>
       <p class="project-description" id="dynamicDescription">I build innovative, database-driven web applications with a focus on clean architecture and user experience. <b>
       See my projects below to explore my work and skills in action.
-      
-      </p>
-     
+      </b></p>
     </div>
 
     <div class="carousel-widget" id="heroCarousel">
@@ -104,19 +150,19 @@
         <h3>Ward Management System</h3>
         <div class="tech">ASP.NET MVC • C# • SQL Server • Entity Framework</div>
         <p>Hospital ward system for admissions, transfers, discharges. Role-based auth, 40% faster queries, 45% workflow improvement.</p>
-        <a href="https://github.com/sphesihle1017/HealthOpsHospital" target="_blank" class="project-link">View on GitHub →</a>
+        <a href="https://github.com/sphesihle1017/HealthOpsHospital" target="_blank" rel="noopener" class="project-link">View on GitHub →</a>
       </div>
       <div class="project-card">
         <h3>Online Shopping System</h3>
         <div class="tech">ASP.NET MVC • C# • SQL Server • Dapper • JavaScript</div>
         <p>Responsive e‑commerce platform with product catalog, cart, and checkout. Focused on UX and performance.</p>
-        <a href="https://github.com/sphesihle1017/myshop-order-management-system" target="_blank" class="project-link">View on GitHub →</a>
+        <a href="https://github.com/sphesihle1017/myshop-order-management-system" target="_blank" rel="noopener" class="project-link">View on GitHub →</a>
       </div>
       <div class="project-card">
         <h3>Hotel Booking System</h3>
         <div class="tech">ASP.NET MVC • C# • Dapper • SQL Server</div>
         <p>Booking validation & availability tracking. 50% fewer conflicts, 35% faster DB with Dapper.</p>
-        <a href="https://github.com/sphesihle1017/Azure-Hotel" target="_blank" class="project-link">View on GitHub →</a>
+        <a href="https://github.com/sphesihle1017/Azure-Hotel" target="_blank" rel="noopener" class="project-link">View on GitHub →</a>
       </div>
     </div>
   </section>
@@ -136,10 +182,8 @@
           <div class="meta">Nomaswazi High School | 2020 | Pietermaritzburg</div>
         </div>
       </div>
-     
     </div>
   </section>
-  
 
   <!-- CERTIFICATES SECTION -->
   <section class="section certificates-section" id="certificates">
@@ -152,7 +196,7 @@
     </div>
     <div class="carousel-description" id="certsDescription">
       Oracle Cloud Database Professional 2025<br/>
-      <a href="https://catalog-education.oracle.com/pls/certview/sharebadge?id=E1805F30B43188A5777BA9B2A58676523F1C5C5DFD6257BDCE929D45E92ADAB2" target="_blank" class="cert-link">Verify credential →</a>
+      <a href="https://catalog-education.oracle.com/pls/certview/sharebadge?id=E1805F30B43188A5777BA9B2A58676523F1C5C5DFD6257BDCE929D45E92ADAB2" target="_blank" rel="noopener" class="cert-link">Verify credential →</a>
     </div>
   </section>
 
@@ -163,8 +207,8 @@
     <div class="contact-links">
       <span>📧 sphesihlesbani@gmail.com</span>
       <span>📞 071 566 4834</span>
-      <a href="https://linkedin.com/in/sphesihleshezi1017" target="_blank">LinkedIn</a>
-      <a href="https://github.com/sphesihle1017" target="_blank">GitHub</a>
+      <a href="https://linkedin.com/in/sphesihleshezi1017" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/sphesihle1017" target="_blank" rel="noopener">GitHub</a>
       <span>📍Johanesburg, Gauteng / Pietermaritzburg, KwaZulu Natal</span>
       <span>🚗 Code 10</span>
     </div>
