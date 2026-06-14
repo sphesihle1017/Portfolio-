@@ -123,4 +123,19 @@ hamburger.addEventListener('click', () => {
   navLinks.classList.toggle('active');
 });
 
+    // ---------- INTRO LOADER ----------
+    const loader = document.getElementById('intro-loader');
+
+    // After 3 seconds: slide loader up, reveal hero content
+    setTimeout(() => {
+      loader.classList.add('exit');
+
+      // When exit animation finishes, remove loader & unlock scroll
+      loader.addEventListener('animationend', () => {
+        loader.style.display = 'none';
+        document.body.classList.remove('loading');
+        document.body.classList.add('revealed');
+      }, { once: true });
+    }, 3000);
+
   });
