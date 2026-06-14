@@ -3,13 +3,13 @@
 
 /* ========== SOFT SAND PALETTE ========== */
 :root {
-  --sand-light: #f5efe6;        /* lightest sand */
-  --sand-medium: #e6d9c8;       /* medium sand */
-  --sand-dark: #c8b9a6;         /* dark sand */
-  --sand-deep: #a89880;         /* deeper accent */
-  --text-dark: #3e3a35;         /* warm dark brown */
-  --text-light: #5c5348;        /* soft brown text */
-  --accent: #b8956a;            /* warm gold accent */
+  --sand-light: #f5efe6;
+  --sand-medium: #e6d9c8;
+  --sand-dark: #c8b9a6;
+  --sand-deep: #a89880;
+  --text-dark: #3e3a35;
+  --text-light: #5c5348;
+  --accent: #b8956a;
   --overlay-dark: rgba(62, 58, 53, 0.65);
 }
 
@@ -92,7 +92,7 @@ nav ul li:hover {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding: 0 60px;
+  padding: 100px 60px 60px 60px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -111,8 +111,8 @@ nav ul li:hover {
 .hero-left {
   position: relative;
   z-index: 2;
-  max-width: 620px;
-  padding-top: 80px;
+  max-width: 580px;
+  flex-shrink: 0;
 }
 
 .hero-left h2 {
@@ -146,14 +146,19 @@ nav ul li:hover {
   opacity: 0.95;
 }
 
-/* ---------- CAROUSEL WIDGET (DESKTOP ONLY) ---------- */
+/* ---------- CAROUSEL WIDGET (DESKTOP) ----------
+   Height changed from 170px → 220px
+   Width adjusted to give cards more room
+   Positioned bottom-right, clear of text
+-------------------------------------------------------- */
 .carousel-widget {
   position: absolute;
-  bottom: 40px;
-  right: 40px;
-  width: 340px;
-  height: 170px;
+  bottom: 48px;
+  right: 48px;
+  width: 370px;
+  height: 220px;   /* ← updated from 170px */
   z-index: 5;
+  flex-shrink: 0;
 }
 
 .carousel {
@@ -165,10 +170,11 @@ nav ul li:hover {
   justify-content: center;
 }
 
+/* Cards sized to fit the new 220px-tall container */
 .card {
   position: absolute;
-  width: 190px;
-  height: 110px;
+  width: 200px;
+  height: 140px;   /* taller to use the extra space */
   border-radius: 16px;
   background: rgba(0,0,0,0.3);
   backdrop-filter: blur(10px);
@@ -181,7 +187,7 @@ nav ul li:hover {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 12px;
+  padding: 14px;
   border: 1px solid rgba(255,255,255,0.3);
   background-size: cover;
   background-position: center;
@@ -223,12 +229,12 @@ nav ul li:hover {
 }
 
 .card.left {
-  transform: translateX(-135px) scale(0.85);
+  transform: translateX(-145px) scale(0.82);
   opacity: 0.5;
 }
 
 .card.right {
-  transform: translateX(135px) scale(0.85);
+  transform: translateX(145px) scale(0.82);
   opacity: 0.5;
 }
 
@@ -236,8 +242,8 @@ nav ul li:hover {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 32px;
-  height: 32px;
+  width: 34px;
+  height: 34px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -257,20 +263,20 @@ nav ul li:hover {
   transform: translateY(-50%) scale(1.05);
 }
 
-.left-arrow { left: -8px; }
-.right-arrow { right: -8px; }
+.left-arrow  { left:  -6px; }
+.right-arrow { right: -6px; }
 
 /* ---------- SECTION CAROUSEL (certificates) ---------- */
 .section-carousel {
   position: relative;
-  width: 340px;
-  height: 190px;
+  width: 370px;
+  height: 220px;   /* match the hero carousel height */
   margin: 30px auto 20px auto;
 }
 
 .carousel-description {
   text-align: center;
-  margin-top: 15px;
+  margin-top: 18px;
   color: var(--text-light);
   font-size: 0.95rem;
   max-width: 460px;
@@ -314,20 +320,12 @@ nav ul li:hover {
 }
 
 /* Individual section backgrounds */
-#aboutSkills {
-  background: linear-gradient(135deg, #f5efe6, #ede3d6);
-}
-#projects {
-  background: linear-gradient(135deg, #f7f1e9, #e7dac8);
-}
-#education {
-  background: linear-gradient(135deg, #f5efe6, #e1d5c4);
-}
-#contact {
-  background: linear-gradient(135deg, #ede3d6, #d8c8b4);
-}
+#aboutSkills  { background: linear-gradient(135deg, #f5efe6, #ede3d6); }
+#projects     { background: linear-gradient(135deg, #f7f1e9, #e7dac8); }
+#education    { background: linear-gradient(135deg, #f5efe6, #e1d5c4); }
+#contact      { background: linear-gradient(135deg, #ede3d6, #d8c8b4); }
 
-/* Certificates section with dynamic background image */
+/* Certificates section with dynamic background */
 .certificates-section {
   background-size: cover;
   background-position: center;
@@ -414,7 +412,7 @@ nav ul li:hover {
 /* Projects grid */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
   gap: 32px;
   margin-top: 48px;
   text-align: left;
@@ -573,7 +571,7 @@ footer {
   border-top: 1px solid rgba(168, 152, 128, 0.3);
 }
 
-/* Hamburger menu (hidden on desktop) */
+/* Hamburger menu */
 .hamburger {
   display: none;
   font-size: 1.8rem;
@@ -584,45 +582,77 @@ footer {
   z-index: 21;
 }
 
-/* ========== RESPONSIVE: HIDE CAROUSEL WIDGET ON MOBILE ========== */
-@media (max-width: 900px) {
-  .hero {
-    padding: 0 30px;
-    min-height: 90vh;
-  }
-  
-  .hero-left h2 {
-    font-size: 36px;
-  }
-  
-  .hero-left .role {
-    font-size: 16px;
-  }
-  
-  .hero-left .stack {
-    font-size: 12px;
-  }
-  
-  .project-description {
-    font-size: 14px;
-  }
-  
-  
+/* ========================================================
+   RESPONSIVE BREAKPOINTS
+   All breakpoints ensure nothing overlaps and layout
+   fills the screen proportionally
+   ======================================================== */
+
+/* ---------- LARGE TABLET / NARROW DESKTOP (≤1100px) ---------- */
+@media (max-width: 1100px) {
   .carousel-widget {
-    display: none;
+    width: 320px;
+    height: 220px;
+    right: 30px;
+    bottom: 36px;
+  }
+
+  .card {
+    width: 178px;
+    height: 128px;
+  }
+
+  .card.left  { transform: translateX(-120px) scale(0.82); }
+  .card.right { transform: translateX(120px)  scale(0.82); }
+
+  .hero-left {
+    max-width: 520px;
   }
 }
 
-/* Mobile menu */
+/* ---------- TABLET / HIDE CAROUSEL WIDGET (≤900px) ---------- */
+@media (max-width: 900px) {
+  .hero {
+    padding: 90px 30px 50px 30px;
+    min-height: 85vh;
+    align-items: flex-start;
+  }
+
+  .hero-left {
+    max-width: 100%;
+    padding-top: 20px;
+  }
+
+  .hero-left h2  { font-size: 36px; }
+  .hero-left .role  { font-size: 16px; }
+  .hero-left .stack { font-size: 12px; }
+  .project-description { font-size: 14px; }
+
+  /* Hide the floating carousel on tablet — it would overlap the text */
+  .carousel-widget { display: none; }
+
+  .section { padding: 70px 36px; }
+
+  .section-carousel {
+    width: 340px;
+    height: 220px;
+  }
+
+  .card.active {
+    width: 190px;
+    height: 130px;
+  }
+
+  .card.left  { transform: translateX(-130px) scale(0.82); }
+  .card.right { transform: translateX(130px)  scale(0.82); }
+}
+
+/* ---------- MOBILE MENU (≤700px) ---------- */
 @media (max-width: 700px) {
-  nav {
-    padding: 14px 24px;
-  }
-  
-  .hamburger {
-    display: block;
-  }
-  
+  nav { padding: 14px 20px; }
+
+  .hamburger { display: block; }
+
   .nav-links {
     position: absolute;
     top: 70px;
@@ -638,85 +668,110 @@ footer {
     border-bottom: 1px solid rgba(168,152,128,0.4);
     z-index: 19;
   }
-  
-  .nav-links.active {
-    display: flex;
+
+  .nav-links.active { display: flex; }
+
+  .hero {
+    padding: 80px 20px 44px 20px;
+    min-height: 80vh;
   }
-  
-  .section {
-    padding: 60px 24px;
-  }
-  
-  .section h2 {
-    font-size: 1.8rem;
-  }
-  
+
+  .hero-left h2 { font-size: 30px; }
+
+  .section { padding: 60px 20px; }
+  .section h2 { font-size: 1.8rem; }
+
   .about-text {
-    font-size: 0.95rem;
+    font-size: 0.92rem;
     text-align: left;
   }
-  
-  .skills-grid {
-    gap: 18px;
+
+  .skills-grid { gap: 16px; }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
-  
-  .project-card h3 {
-    font-size: 1.25rem;
-  }
-  
+
+  .project-card { padding: 22px 18px; }
+  .project-card h3 { font-size: 1.2rem; }
+
+  .education-text { max-width: 100%; }
+
   .contact-links {
-    gap: 18px;
+    gap: 16px;
     flex-direction: column;
     align-items: center;
   }
-  
+
   .section-carousel {
-    width: 280px;
-    height: 170px;
+    width: 300px;
+    height: 210px;
   }
-  
+
   .card.active {
     width: 170px;
-    height: 100px;
+    height: 120px;
   }
-  
-  .card.left, .card.right {
-    transform: translateX(-100px) scale(0.8);
+
+  .card.left  { transform: translateX(-112px) scale(0.8); }
+  .card.right { transform: translateX(112px)  scale(0.8); }
+}
+
+/* ---------- SMALL MOBILE (≤480px) ---------- */
+@media (max-width: 480px) {
+  nav { padding: 12px 16px; }
+
+  .hero {
+    padding: 76px 16px 40px 16px;
+    min-height: 75vh;
   }
-  
-  .card.right {
-    transform: translateX(100px) scale(0.8);
+
+  .hero-left h2 { font-size: 26px; }
+  .hero-left .role  { font-size: 14px; }
+  .project-description { font-size: 13px; }
+
+  .section { padding: 50px 16px; }
+  .section h2 { font-size: 1.6rem; }
+
+  .skills-grid { grid-template-columns: 1fr; }
+
+  .section-carousel {
+    width: 260px;
+    height: 190px;
+  }
+
+  .card.active {
+    width: 150px;
+    height: 105px;
+  }
+
+  .card.left  { transform: translateX(-95px) scale(0.78); }
+  .card.right { transform: translateX(95px)  scale(0.78); }
+
+  .carousel-description {
+    font-size: 0.85rem;
+    padding: 8px 14px;
+  }
+
+  .contact-links a,
+  .contact-links span {
+    font-size: 0.88rem;
   }
 }
 
-@media (max-width: 480px) {
-  .hero-left h2 {
-    font-size: 28px;
-  }
-  
-  .hero {
-    padding: 0 20px;
-  }
-  
-  .project-description {
-    font-size: 13px;
-  }
-  
+/* ---------- VERY SMALL (≤360px) ---------- */
+@media (max-width: 360px) {
   .section-carousel {
-    width: 250px;
-    height: 150px;
+    width: 230px;
+    height: 170px;
   }
-  
-  .card.left, .card.right {
-    transform: translateX(-70px) scale(0.75);
-  }
-  
-  .card.right {
-    transform: translateX(70px) scale(0.75);
-  }
-  
+
   .card.active {
-    width: 150px;
-    height: 90px;
+    width: 130px;
+    height: 92px;
   }
+
+  .card.left  { transform: translateX(-82px) scale(0.76); }
+  .card.right { transform: translateX(82px)  scale(0.76); }
 }
