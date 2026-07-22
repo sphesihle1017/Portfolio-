@@ -1,9 +1,9 @@
 // ---------- HERO CAROUSEL ----------
 const heroProjects = [
-    { title:"Home", img:"images/Background.jpg", role:"Sphesihle Shezi", stack:"Full-Stack Developer", desc:"I build user friendly database driven web applications using modern frameworks such as ASP.NET. See projects below to explore my work and skills in action." },
-    { title:"Ward Management", img:"images/Project1.PNG", role:"HealthCare System", stack:"ASP.NET MVC · C# · SQL Server", desc:"Hospital ward management with role-based auth and optimized queries." },
-    { title:"Online Shopping", img:"images/Project2.PNG", role:"E‑Commerce Platform", stack:"ASP.NET · Dapper · JavaScript", desc:"Responsive shopping site with cart and checkout." },
-    { title:"Hotel Booking", img:"images/Project3.png", role:"Reservation System", stack:"ASP.NET · Dapper · SQL Server", desc:"Booking validation and availability tracking; 50% fewer conflicts." }
+    { title:"Home", img:"images/Background.jpg", role:"Sphesihle Shezi", stack:"Software Engineer", desc:"Graduate Software Developer with hands-on practical experience in building database-driven, secured with role-based authentication web applications using technologies and frameworks such as ASP.NET MVC (LINQ, DAPPER), C#, and SQL Server." },
+    { title:"Ward Management", img:"images/Project1.PNG", role:"Hospital Management System", stack:"ASP.NET MVC (Entity Framework) · C# · SQL Server", desc:"ASP.NET Core MVC with Dapper, AI chatbot, SignalR live chat, and real-time email notifications for appointments and billing. Includes EMR, scheduling, inventory, and analytics dashboards to streamline workflows and enhance patient engagement" },
+    { title:"Online Shopping", img:"images/Project2.PNG", role:"Online Shopping Website", stack:"C#, ASP.NET Core MVC, Bootstrap, HTML, CSS, JavaScript, SQL Server", desc:"ASP.NET Core MVC with Entity Framework, smart recommendations, real-time inventory, and automated order/shipping email alerts. Features product catalog, secure checkout, payment gateway, and sales reports for seamless e-commerce operations." },
+    { title:"Hotel Booking", img:"images/Project3.png", role:"Hotel Booking System", stack: "C#, ASP.NET Core MVC, Bootstrap, HTML, CSS, JavaScript, SQL Server", desc:"ASP.NET Core MVC with Dapper, confirmations for bookings and check-ins. Manages room inventory, dynamic pricing, payments, and occupancy analytics to optimize reservations and guest satisfaction." }
   ];
   
   let heroIndex = 0;
