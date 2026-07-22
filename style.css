@@ -438,7 +438,10 @@ nav ul li:hover {
   margin-bottom: 10px;
   color: var(--text-dark);
 }
-
+#projects{
+  h2{
+    color: #c8b9a6;
+}
 .project-card .tech {
   font-size: 0.8rem;
   color: var(--accent);
