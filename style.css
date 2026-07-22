@@ -51,9 +51,8 @@ nav h1 {
 }
 
 nav h1 .education-image img {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
+  width: 55px;
+  height: 65px;
   object-fit: cover;
   border: 2px solid var(--accent);
   transition: transform 0.2s;
@@ -166,11 +165,11 @@ nav ul li:hover {
   justify-content: center;
 }
 
-/* Cards  */
+/* Cards sized to fit the new 220px-tall container */
 .card {
   position: absolute;
   width: 200px;
-  height: 140px;   
+  height: 140px;   /* taller to use the extra space */
   border-radius: 16px;
   background: rgba(0,0,0,0.3);
   backdrop-filter: blur(10px);
@@ -266,7 +265,7 @@ nav ul li:hover {
 .section-carousel {
   position: relative;
   width: 370px;
-  height: 220px;  
+  height: 220px;   /* match the hero carousel height */
   margin: 30px auto 20px auto;
 }
 
@@ -329,6 +328,7 @@ nav ul li:hover {
   position: relative;
 }
 
+
 .certificates-section::before {
   content: "";
   position: absolute;
@@ -341,6 +341,7 @@ nav ul li:hover {
   position: relative;
   z-index: 1;
 }
+
 
 /* About text */
 .about-text {
@@ -404,6 +405,8 @@ nav ul li:hover {
   left: 0;
   font-size: 0.85rem;
 }
+
+
 
 /* Projects grid */
 .projects-grid {
@@ -473,11 +476,21 @@ nav ul li:hover {
   gap: 40px;
   flex-wrap: wrap;
 }
-
+@media (max-width: 700px) {
+  #projects{
+  background-image: url('images/Image.jpeg');
+  background-size: cover;
+  background-position: center;
+  h2{
+    color: rgb(219, 214, 214)
+  }
+}
+}
 .education-text {
   flex: 2;
   max-width: 700px;
   text-align: left;
+  
 }
 
 .education-item {
@@ -577,8 +590,20 @@ footer {
   cursor: pointer;
   z-index: 21;
 }
-
-
+#projects{
+  background-image: url('images/High_DS79542-066\ 2.jpg.jpeg');
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;  
+  h2{
+    color: rgb(219, 208, 208)
+  }
+}
+/* ========================================================
+   RESPONSIVE BREAKPOINTS
+   All breakpoints ensure nothing overlaps and layout
+   fills the screen proportionally
+   ======================================================== */
 
 /* ---------- LARGE TABLET / NARROW DESKTOP (≤1100px) ---------- */
 @media (max-width: 1100px) {
@@ -588,6 +613,7 @@ footer {
     right: 30px;
     bottom: 36px;
   }
+  
 
   .card {
     width: 178px;
@@ -600,7 +626,16 @@ footer {
   .hero-left {
     max-width: 520px;
   }
+  #projects{
+  background-image: url('images/Image.jpeg');
+  background-size: cover;
+  background-position: center;
+  h2{
+    color: rgb(219, 214, 214)
+  }
+  }
 }
+
 
 /* ---------- TABLET / HIDE CAROUSEL WIDGET (≤900px) ---------- */
 @media (max-width: 900px) {
@@ -609,7 +644,13 @@ footer {
     min-height: 85vh;
     align-items: flex-start;
   }
-
+  #projects{
+  background-image: url('images/Image.jpeg');
+  background-size: cover;
+  background-position: center;
+  h2{
+    color: rgb(219, 214, 214)
+  }}
   .hero-left {
     max-width: 100%;
     padding-top: 20px;
@@ -708,6 +749,15 @@ footer {
 
   .card.left  { transform: translateX(-112px) scale(0.8); }
   .card.right { transform: translateX(112px)  scale(0.8); }
+}
+#projects{
+  background-image: url('images/Image.jpeg');
+  background-size: cover;
+  background-position: center;
+  h2{
+    color: rgb(219, 214, 214)
+  }
+
 }
 
 /* ---------- SMALL MOBILE (≤480px) ---------- */
