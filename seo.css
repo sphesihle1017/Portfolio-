@@ -1,0 +1,41 @@
+/* seo.css – loaded after style.css. Can be merged into style.css. */
+
+/* Nav logo is now a link (was an <h1> wrapping an image) */
+nav .nav-brand { display: block; line-height: 0; }
+nav .nav-brand img {
+  display: block; width: 3.4rem; height: 4rem; object-fit: cover;
+  border: 2px solid var(--accent); transition: transform 0.2s;
+}
+nav .nav-brand:hover img { transform: scale(1.05); }
+nav .nav-brand:focus-visible,
+nav ul li a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+@media (max-width: 700px) { nav .nav-brand img { width: 2.75rem; height: 3.25rem; } }
+
+/* Nav items are real links */
+nav ul li a { color: inherit; text-decoration: none; display: block; }
+
+/* Hero name is now the page's <h1> (same look as the old h2) */
+.hero-left h1 {
+  font-size: clamp(1.75rem, 1.1rem + 2.4vw, 3.25rem);
+  font-weight: 600; margin-bottom: 0.75rem; color: #fff; line-height: 1.2;
+}
+
+/* Quick facts (About) */
+.quick-facts {
+  max-width: 50rem; margin: 0 auto 2.5rem auto; text-align: left;
+  display: grid; grid-template-columns: max-content 1fr; gap: 0.5rem 1.25rem;
+  background: rgba(255,255,255,0.45); border: 1px solid rgba(168,152,128,0.35);
+  border-radius: 20px; padding: 1.25rem 1.5rem; font-size: 0.92rem; color: var(--text-light);
+}
+.quick-facts dt { font-weight: 700; color: var(--text-dark); }
+.quick-facts dd a, .cert-list a { color: var(--accent-text); font-weight: 600; text-decoration: none; border-bottom: 1px solid transparent; }
+.quick-facts dd a:hover, .cert-list a:hover { border-bottom-color: var(--accent); }
+@media (max-width: 600px) { .quick-facts { grid-template-columns: 1fr; gap: 0.15rem; } .quick-facts dd { margin-bottom: 0.6rem; } }
+
+/* Visible, crawlable certificate list */
+.cert-list {
+  list-style: none; max-width: 36rem; margin: 1.25rem auto 0 auto; text-align: left;
+  font-size: 0.92rem; color: var(--text-light);
+}
+.cert-list li { padding: 0.35rem 0 0.35rem 1rem; position: relative; }
+.cert-list li::before { content: "▹"; color: var(--accent); position: absolute; left: 0; }
