@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sphesihlesportfolio.vercel.app/sitemap.xml
