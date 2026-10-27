@@ -314,7 +314,10 @@ nav ul li:hover {
 }
 
 /* Individual section backgrounds */
-#aboutSkills  { background: linear-gradient(135deg, #f5efe6, #ede3d6); }
+#aboutSkills  {
+  background: linear-gradient(135deg, #f5efe6, #ede3d6); 
+  width: 1080px ; 
+}
 #education    { background: linear-gradient(135deg, #f5efe6, #e1d5c4); }
 #contact      { background: linear-gradient(135deg, #ede3d6, #d8c8b4); }
 
