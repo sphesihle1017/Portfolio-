@@ -1,6 +1,6 @@
 // ---------- HERO CAROUSEL ----------
 const heroProjects = [
-    { title:"Home", img:"images/Background.jpg", role:"Sphesihle Shezi", stack:"Software Engineer", desc:"Graduate Software Developer with hands-on practical experience in building database-driven, secured with role-based authentication web applications using technologies and frameworks such as ASP.NET MVC (LINQ, DAPPER), C#, and SQL Server." },
+    { title:"Home", img:"images/Background.jpg", role:"Sphesihle Shezi", stack:"Software Engineer", desc:"Junior Software Developer with hands-on practical experience in building database-driven, secured with role-based authentication web applications using technologies and frameworks such as ASP.NET MVC (LINQ, DAPPER), C#, and SQL Server." },
     { title:"Ward Management", img:"images/Project1.PNG", role:"Hospital Management System", stack:"ASP.NET MVC (Entity Framework) · C# · SQL Server", desc:"ASP.NET Core MVC with Dapper, AI chatbot, SignalR live chat, and real-time email notifications for appointments and billing. Includes EMR, scheduling, inventory, and analytics dashboards to streamline workflows and enhance patient engagement" },
     { title:"Online Shopping", img:"images/Project2.PNG", role:"Online Shopping Website", stack:"C#, ASP.NET Core MVC, Bootstrap, HTML, CSS, JavaScript, SQL Server", desc:"ASP.NET Core MVC with Entity Framework, smart recommendations, real-time inventory, and automated order/shipping email alerts. Features product catalog, secure checkout, payment gateway, and sales reports for seamless e-commerce operations." },
     { title:"Hotel Booking", img:"images/Project3.png", role:"Hotel Booking System", stack: "C#, ASP.NET Core MVC, Bootstrap, HTML, CSS, JavaScript, SQL Server", desc:"ASP.NET Core MVC with Dapper, confirmations for bookings and check-ins. Manages room inventory, dynamic pricing, payments, and occupancy analytics to optimize reservations and guest satisfaction." }
@@ -106,8 +106,7 @@ const heroProjects = [
   
   addSwipe("heroCarousel", moveHero);
   addSwipe("certsCarousel", moveCerts);
-  
-  // ---------- SMOOTH SCROLL ----------
+ 
   function go(sectionId) {
     document.getElementById(sectionId).scrollIntoView({behavior:"smooth"});
   }
@@ -123,14 +122,13 @@ hamburger.addEventListener('click', () => {
   navLinks.classList.toggle('active');
 });
 
-    // ---------- INTRO LOADER ----------
+    
     const loader = document.getElementById('intro-loader');
 
-    // After 3 seconds: slide loader up, reveal hero content
+   
     setTimeout(() => {
       loader.classList.add('exit');
 
-      // When exit animation finishes, remove loader & unlock scroll
       loader.addEventListener('animationend', () => {
         loader.style.display = 'none';
         document.body.classList.remove('loading');
