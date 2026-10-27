@@ -134,7 +134,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="loader.css" />
-  <link rel="stylesheet" href="seo.css" />
 </head>
 <body class="loading">
 
@@ -151,28 +150,28 @@
   </div>
 
   <!--  NAVIGATION -->
-  <nav aria-label="Main">
-    <a class="nav-brand" href="#hero" aria-label="Sphesihle Shezi – home">
-      <img src="images/High_DA30796-047.jpg" alt="Sphesihle Shezi" width="54" height="64" />
-    </a>
+  <nav>
+    <h1>
+      <div class="education-image">
+        <img src="images/High_DA30796-047.jpg" alt="Sphesihle Shezi" />
+      </div>
+    </h1>
     <button class="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">&#9776;</button>
     <ul class="nav-links" id="navLinks">
-      <li><a href="#hero" onclick="go('hero');return false;">Home</a></li>
-      <li><a href="#aboutSkills" onclick="go('aboutSkills');return false;">About &amp; Skills</a></li>
-      <li><a href="#experience" onclick="go('experience');return false;">Experience</a></li>
-      <li><a href="#projects" onclick="go('projects');return false;">Projects</a></li>
-      <li><a href="#education" onclick="go('education');return false;">Education</a></li>
-      <li><a href="#certificates" onclick="go('certificates');return false;">Certificates</a></li>
-      <li><a href="#contact" onclick="go('contact');return false;">Contact</a></li>
+      <li onclick="go('hero')">Home</li>
+      <li onclick="go('aboutSkills')">About & Skills</li>
+      <li onclick="go('experience')">Experience</li>
+      <li onclick="go('projects')">Projects</li>
+      <li onclick="go('education')">Education</li>
+      <li onclick="go('certificates')">Certificates</li>
+      <li onclick="go('contact')">Contact</li>
     </ul>
   </nav>
-
-  <main id="main">
 
   <!-- HERO + CAROUSEL -->
   <div class="hero" id="hero">
     <div class="hero-left">
-      <h1>Hey, I'm Sphesihle Shezi</h1>
+      <h2>Hey, I'm Sphesihle Shezi</h2>
       <div class="role" id="dynamicRole">Junior Software Developer</div>
       <div class="stack" id="dynamicStack">ASP.NET MVC • C# • SQL Server • JavaScript • HTML/CSS • WordPress</div>
       <p class="project-description" id="dynamicDescription">I build innovative, database-driven web applications with a focus on clean architecture and user experience. <b>
@@ -189,21 +188,11 @@
 
   <!-- ABOUT & SKILLS -->
   <section class="section" id="aboutSkills">
-    <h2>About &amp; Skills</h2>
+    <h2>About & Skills</h2>
     <div class="about-text">
-      <p>Sphesihle Shezi is a Junior Software Developer from South Africa, based in Pietermaritzburg, KwaZulu-Natal. Sphesihle holds a Diploma in Information Technology (Software Development) from Nelson Mandela University (2022–2025) and is currently a Software Developer Intern at SITA SOC (Ltd).</p>
-      <p style="margin-top:1rem;">Hands-on experience building database-driven web applications with C#, ASP.NET and SQL Server, backed by an Oracle Cloud Database certification and a foundation in scripting (Python, C#, JavaScript) and system logic.</p>
+      Junior Software Developer holding a Diploma in Information Technology (Software Development) and hands-on experience building database-driven systems using SQL Server, C#, and ASP.NET.
+      Oracle Cloud Database Certified with a strong foundation in databases, scripting (Python, C#, JavaScript), and system logic. Eager to apply analytical thinking and problem-solving to server monitoring, infrastructure support, and IT operations.
     </div>
-
-    <dl class="quick-facts">
-      <dt>Name</dt><dd>Sphesihle Shezi</dd>
-      <dt>Role</dt><dd>Junior Software Developer</dd>
-      <dt>Current position</dt><dd>Software Developer Intern, SITA SOC (Ltd), since September 2026</dd>
-      <dt>Education</dt><dd>Diploma in Information Technology (Software Development), Nelson Mandela University, 2022–2025</dd>
-      <dt>Certifications</dt><dd>Oracle Cloud Database Professional 2025; Cisco CCNAv7: Introduction to Networks; Cisco Introduction to Cybersecurity</dd>
-      <dt>Location</dt><dd>Pietermaritzburg, KwaZulu-Natal, South Africa</dd>
-      <dt>Profiles</dt><dd><a href="https://github.com/sphesihle1017" rel="me noopener" target="_blank">GitHub</a> · <a href="https://www.linkedin.com/in/sphesihleshezi1017" rel="me noopener" target="_blank">LinkedIn</a></dd>
-    </dl>
 
     <div class="skills-grid">
       <div class="skill-card">
@@ -215,7 +204,7 @@
         </ul>
       </div>
       <div class="skill-card">
-        <h3>Languages &amp; Web</h3>
+        <h3>Languages & Web</h3>
         <ul>
           <li>C#, JavaScript, Python, SQL</li>
           <li>HTML5, CSS3</li>
@@ -223,17 +212,17 @@
         </ul>
       </div>
       <div class="skill-card">
-        <h3>Databases &amp; Cloud</h3>
+        <h3>Databases & Cloud</h3>
         <ul>
           <li>SQL Server, MySQL</li>
           <li>Oracle Cloud Infrastructure (OCI)</li>
         </ul>
       </div>
       <div class="skill-card">
-        <h3>Frameworks &amp; Tools</h3>
+        <h3>Frameworks & Tools</h3>
         <ul>
           <li>ASP.NET MVC, Dapper, Entity Framework</li>
-          <li>Bootstrap, Git &amp; GitHub</li>
+          <li>Bootstrap, Git & GitHub</li>
           <li>Visual Studio, SSMS</li>
         </ul>
       </div>
@@ -248,6 +237,7 @@
     </div>
   </section>
 
+
   <!-- PROJECTS SECTION -->
   <section class="section" id="projects">
     <h2>Projects</h2>
@@ -256,39 +246,38 @@
         <h3>Ward Management System</h3>
         <div class="tech">ASP.NET MVC • C# • SQL Server • Entity Framework</div>
         <p>Hospital ward system for admissions, transfers, discharges. Role-based auth, 40% faster queries, 45% workflow improvement.</p>
-        <a href="https://github.com/sphesihle1017/HealthOpsHospital" target="_blank" rel="noopener" class="project-link">View Ward Management System on GitHub →</a>
+        <a href="https://github.com/sphesihle1017/HealthOpsHospital" target="_blank" rel="noopener" class="project-link">View on GitHub →</a>
       </div>
       <div class="project-card">
         <h3>Online Shopping System</h3>
         <div class="tech">ASP.NET MVC • C# • SQL Server • Dapper • JavaScript</div>
         <p>Responsive e‑commerce platform with product catalog, cart, and checkout. Focused on UX and performance.</p>
-        <a href="https://github.com/sphesihle1017/myshop-order-management-system" target="_blank" rel="noopener" class="project-link">View Online Shopping System on GitHub →</a>
+        <a href="https://github.com/sphesihle1017/myshop-order-management-system" target="_blank" rel="noopener" class="project-link">View on GitHub →</a>
       </div>
       <div class="project-card">
         <h3>Hotel Booking System</h3>
         <div class="tech">ASP.NET MVC • C# • Dapper • SQL Server</div>
-        <p>Booking validation &amp; availability tracking. 50% fewer conflicts, 35% faster DB with Dapper.</p>
-        <a href="https://github.com/sphesihle1017/Azure-Hotel" target="_blank" rel="noopener" class="project-link">View Hotel Booking System on GitHub →</a>
+        <p>Booking validation & availability tracking. 50% fewer conflicts, 35% faster DB with Dapper.</p>
+        <a href="https://github.com/sphesihle1017/Azure-Hotel" target="_blank" rel="noopener" class="project-link">View on GitHub →</a>
       </div>
     </div>
   </section>
-
   <!-- EXPERIENCE SECTION -->
   <section class="section" id="experience">
     <h2>Experience</h2>
-    <div class="info-grid info-grid--single">
-
+    <div class="info-grid">
+     
   <!--     <article class="info-card">
         <h3>Data Capturer & Freelance developer</h3>
         <div class="meta">Oxior Civil Enterprises | June 2026 – August 2026</div>
-        <p><li>Capturing and maintaining business data accurately and on time, with attention to detail and data integrity.
-
+        <p><li>Capturing and maintaining business data accurately and on time, with attention to detail and data integrity. 
+       
          <br><li> Desgined and built a user friendly cross-platform web application for Oxior Civil Enterprises Pty ltd
       </article> -->
-      <article class="info-card">
+       <article class="info-card">
         <h3>Software Developer Intern</h3>
-        <div class="meta">SITA SOC LTD | September 2026 – Present (internship)</div>
-        <p>Engaged with Senior developers &amp; Team members to provide IT solutions to the government sector.</p>
+        <div class="meta">SITA SOC LTD | September 2026 – Present</div>
+        <p>Engaged with Senior developers & Team members to provide IT solutions to the government sector.</p>
       </article>
     </div>
   </section>
@@ -322,11 +311,6 @@
       Oracle Cloud Database Professional 2025<br/>
       <a href="https://catalog-education.oracle.com/pls/certview/sharebadge?id=E1805F30B43188A5777BA9B2A58676523F1C5C5DFD6257BDCE929D45E92ADAB2" target="_blank" rel="noopener" class="cert-link">Verify credential →</a>
     </div>
-    <ul class="cert-list">
-      <li>Oracle Cloud Database Professional 2025 – <a href="https://catalog-education.oracle.com/pls/certview/sharebadge?id=E1805F30B43188A5777BA9B2A58676523F1C5C5DFD6257BDCE929D45E92ADAB2" target="_blank" rel="noopener">verify on Oracle</a></li>
-      <li>CCNAv7: Introduction to Networks, Cisco – <a href="https://www.credly.com/earner/earned/badge/b9cc50cd-636a-47e6-8f80-0f1afdbd4911" target="_blank" rel="noopener">verify on Credly</a></li>
-      <li>Introduction to Cybersecurity, Cisco – <a href="https://www.credly.com/badges/35004b35-f595-4415-b16b-49b93b90152b" target="_blank" rel="noopener">verify on Credly</a></li>
-    </ul>
   </section>
 
   <!-- CONTACT SECTION -->
@@ -336,10 +320,10 @@
     <div class="contact-links">
       <span><i class="fas fa-envelope"></i> sphesihlesbani@gmail.com</span>
       <span><i class="fas fa-phone-alt"></i> 071 566 4834</span>
-      <a href="https://www.linkedin.com/in/sphesihleshezi1017" target="_blank" rel="me noopener">
+      <a href="https://www.linkedin.com/in/sphesihleshezi1017" target="_blank" rel="noopener">
         <i class="fab fa-linkedin"></i> LinkedIn
       </a>
-      <a href="https://github.com/sphesihle1017" target="_blank" rel="me noopener">
+      <a href="https://github.com/sphesihle1017" target="_blank" rel="noopener">
         <i class="fab fa-github"></i> GitHub
       </a>
       <span><i class="fas fa-map-marker-alt"></i> Johannesburg, Gauteng / Pietermaritzburg, KwaZulu Natal</span>
@@ -347,9 +331,7 @@
     </div>
   </section>
 
-  </main>
-
-  <footer>© 2026 Sphesihle Shezi – Junior Software Developer, South Africa</footer>
+  <footer>© 2026 Sphesihle Shezi</footer>
 
   <script src="script.js"></script>
 </body>
