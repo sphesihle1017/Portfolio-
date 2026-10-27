@@ -9,8 +9,30 @@
   --text-dark: #3e3a35;
   --text-light: #5c5348;
   --accent: #b8956a;
+  --accent-text: #8a6a40;            /* darker accent for small text (better contrast) */
   --overlay-dark: rgba(62, 58, 53, 0.65);
+
+  /* ---------- LAYOUT TOKENS ---------- */
+  --content-max: 75rem;              /* max width of page content (scales on large screens) */
+  --gutter: clamp(1rem, 4vw, 3.5rem);
+  /* Horizontal padding that keeps content inside --content-max while backgrounds stay full width */
+  --pad-x: max(var(--gutter), calc((100% - var(--content-max)) / 2));
+  --section-pad-y: clamp(3.5rem, 7vw, 6.5rem);
+
+  /* ---------- CAROUSEL TOKENS (overridden per breakpoint) ---------- */
+  --carousel-w: 23rem;
+  --carousel-h: 13.75rem;
+  --card-w: 12.5rem;
+  --card-h: 8.75rem;
+  --card-offset: 9rem;
 }
+
+/* Scale the whole UI up on big monitors (everything below uses rem) */
+html { font-size: 100%; scroll-padding-top: 6rem; }
+@media (min-width: 1600px) { html { font-size: 112.5%; } }
+@media (min-width: 2000px) { html { font-size: 125%; } }
+@media (min-width: 2560px) { html { font-size: 150%; } }
+@media (min-width: 3400px) { html { font-size: 200%; } }
 
 * {
   margin: 0;
@@ -23,7 +45,10 @@ body {
   background: var(--sand-light);
   color: var(--text-dark);
   line-height: 1.5;
+  overflow-x: hidden;
 }
+
+img { max-width: 100%; }
 
 /* ---------- FIXED NAVIGATION ---------- */
 nav {
@@ -31,7 +56,7 @@ nav {
   top: 0;
   left: 0;
   width: 100%;
-  padding: 18px 50px;
+  padding: 0.9rem var(--pad-x);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -50,8 +75,9 @@ nav h1 {
 }
 
 nav h1 .education-image img {
-  width: 55px;
-  height: 65px;
+  display: block;
+  width: 3.4rem;
+  height: 4rem;
   object-fit: cover;
   border: 2px solid var(--accent);
   transition: transform 0.2s;
@@ -64,7 +90,7 @@ nav h1 .education-image img:hover {
 nav ul {
   list-style: none;
   display: flex;
-  gap: 30px;
+  gap: 1.9rem;
 }
 
 nav ul li {
@@ -76,6 +102,7 @@ nav ul li {
   opacity: 0.8;
   color: var(--text-dark);
   transition: opacity 0.2s;
+  white-space: nowrap;
 }
 
 nav ul li:hover {
@@ -84,13 +111,25 @@ nav ul li:hover {
   text-underline-offset: 6px;
 }
 
+/* Hamburger menu (shown on tablets and phones) */
+.hamburger {
+  display: none;
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  color: var(--text-dark);
+  cursor: pointer;
+  z-index: 21;
+}
+
 /* ---------- HERO SECTION ---------- */
 .hero {
   position: relative;
   min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   align-items: center;
-  padding: 100px 60px 60px 60px;
+  padding: 7rem var(--pad-x) 4rem var(--pad-x);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -109,48 +148,48 @@ nav ul li:hover {
 .hero-left {
   position: relative;
   z-index: 2;
-  max-width: 580px;
+  max-width: 36rem;
   flex-shrink: 0;
 }
 
 .hero-left h2 {
-  font-size: 44px;
+  font-size: clamp(1.75rem, 1.1rem + 2.4vw, 3.25rem);
   font-weight: 600;
-  margin-bottom: 12px;
+  margin-bottom: 0.75rem;
   color: #fff;
   line-height: 1.2;
 }
 
 .hero-left .role {
-  font-size: 18px;
+  font-size: clamp(1rem, 0.9rem + 0.4vw, 1.3rem);
   font-weight: 500;
-  margin-bottom: 8px;
+  margin-bottom: 0.5rem;
   color: #f0eadf;
 }
 
 .hero-left .stack {
-  font-size: 14px;
+  font-size: clamp(0.8rem, 0.75rem + 0.2vw, 0.95rem);
   font-weight: 500;
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
   color: #e6d9c8;
   letter-spacing: 0.3px;
 }
 
 .project-description {
-  font-size: 15px;
+  font-size: clamp(0.85rem, 0.8rem + 0.25vw, 1.05rem);
   line-height: 1.7;
   color: #fff;
-  max-width: 520px;
+  max-width: 34rem;
   opacity: 0.95;
 }
 
-/* ---------- HERO CAROUSEL WIDGET (kept visible at all breakpoints) ---------- */
+/* ---------- HERO CAROUSEL WIDGET ---------- */
 .carousel-widget {
   position: absolute;
-  bottom: 48px;
-  right: 48px;
-  width: 370px;
-  height: 220px;
+  bottom: 3rem;
+  right: var(--pad-x);
+  width: var(--carousel-w);
+  height: var(--carousel-h);
   z-index: 5;
   flex-shrink: 0;
   display: block;
@@ -167,8 +206,8 @@ nav ul li:hover {
 
 .card {
   position: absolute;
-  width: 200px;
-  height: 140px;
+  width: var(--card-w);
+  height: var(--card-h);
   border-radius: 16px;
   background: rgba(0,0,0,0.3);
   backdrop-filter: blur(10px);
@@ -181,7 +220,7 @@ nav ul li:hover {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 14px;
+  padding: 0.9rem;
   border: 1px solid rgba(255,255,255,0.3);
   background-size: cover;
   background-position: center;
@@ -204,13 +243,13 @@ nav ul li:hover {
 }
 
 .card h3 {
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 600;
   margin-bottom: 4px;
 }
 
 .card small {
-  font-size: 10px;
+  font-size: 0.65rem;
   opacity: 0.9;
 }
 
@@ -223,12 +262,12 @@ nav ul li:hover {
 }
 
 .card.left {
-  transform: translateX(-145px) scale(0.82);
+  transform: translateX(calc(var(--card-offset) * -1)) scale(0.82);
   opacity: 0.5;
 }
 
 .card.right {
-  transform: translateX(145px) scale(0.82);
+  transform: translateX(var(--card-offset)) scale(0.82);
   opacity: 0.5;
 }
 
@@ -236,12 +275,12 @@ nav ul li:hover {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 34px;
-  height: 34px;
+  width: 2.1rem;
+  height: 2.1rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 16px;
+  font-size: 1rem;
   cursor: pointer;
   border-radius: 50%;
   background: rgba(255,255,255,0.25);
@@ -263,39 +302,35 @@ nav ul li:hover {
 /* ---------- SECTION CAROUSEL (certificates) ---------- */
 .section-carousel {
   position: relative;
-  width: 370px;
-  height: 220px;
-  margin: 30px auto 20px auto;
+  width: var(--carousel-w);
+  max-width: 100%;
+  height: var(--carousel-h);
+  margin: 1.9rem auto 1.25rem auto;
 }
 
 .carousel-description {
   text-align: center;
-  margin-top: 18px;
+  margin: 1.1rem auto 0 auto;
   color: var(--text-light);
   font-size: 0.95rem;
-  max-width: 460px;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 29rem;
   transition: opacity 0.3s;
   background: rgba(255,255,255,0.5);
-  padding: 10px 18px;
+  padding: 0.65rem 1.1rem;
   border-radius: 40px;
   backdrop-filter: blur(4px);
 }
 
-/* ---------- GENERAL SECTIONS ---------- */
+/* ---------- GENERAL SECTIONS (full-bleed background, constrained content) ---------- */
 .section {
-  padding: 80px 50px;
-  max-width: 1200px;
-  margin: 0 auto;
+  padding: var(--section-pad-y) var(--pad-x);
   text-align: center;
-  transition: background 0.6s ease;
 }
 
 .section h2 {
-  font-size: 2.1rem;
+  font-size: clamp(1.6rem, 1.3rem + 1vw, 2.4rem);
   font-weight: 600;
-  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
   display: inline-block;
   position: relative;
   color: var(--text-dark);
@@ -314,22 +349,19 @@ nav ul li:hover {
 }
 
 /* Individual section backgrounds */
-#aboutSkills  {
-  background: linear-gradient(135deg, #f5efe6, #ede3d6); 
-  width: 1080px ; 
-}
-#education    { background: linear-gradient(135deg, #f5efe6, #e1d5c4); }
-#contact      { background: linear-gradient(135deg, #ede3d6, #d8c8b4); }
+#aboutSkills { background: linear-gradient(135deg, #f5efe6, #ede3d6); }
+#experience  { background: linear-gradient(135deg, #ede3d6, #e6d9c8); }
+#education   { background: linear-gradient(135deg, #f5efe6, #e1d5c4); }
+#contact     { background: linear-gradient(135deg, #ede3d6, #d8c8b4); }
 
-/* ---------- PROJECTS SECTION (single source of truth for background) ---------- */
-
+/* ---------- PROJECTS SECTION ---------- */
 #projects {
   background-image: url('images/Image.jpeg');
   background-size: cover;
   background-position: top center;
   background-repeat: no-repeat;
 }
- 
+
 #projects h2 {
   color: #fff;
   text-shadow: 0 2px 10px rgba(0,0,0,0.5);
@@ -358,28 +390,62 @@ nav ul li:hover {
 
 /* About text */
 .about-text {
-  font-size: 1rem;
+  font-size: clamp(0.95rem, 0.9rem + 0.2vw, 1.1rem);
   line-height: 1.8;
   color: var(--text-light);
-  max-width: 850px;
-  margin: 30px auto 40px auto;
+  max-width: 50rem;
+  margin: 1.9rem auto 2.5rem auto;
   text-align: left;
 }
 
-/* Skills grid */
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 28px;
-  margin-top: 40px;
+/* ---------- CARD GRIDS (centred rows: 1 → 2 → 3 columns) ----------
+   Flex + calc keeps every card the same width and centres a short last row. */
+.skills-grid,
+.projects-grid,
+.info-grid {
+  --cols: 1;
+  --gap: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--gap);
+  margin-top: 2.5rem;
   text-align: left;
 }
 
+.skills-grid > *,
+.projects-grid > *,
+.info-grid > * {
+  flex: 0 0 calc((100% - (var(--cols) - 1) * var(--gap)) / var(--cols) - 0.1px);
+  min-width: 0;
+}
+
+@media (min-width: 640px) {
+  .skills-grid, .projects-grid { --cols: 2; }
+}
+
+@media (min-width: 900px) {
+  .info-grid { --cols: 2; }
+}
+
+@media (min-width: 1000px) {
+  .skills-grid, .projects-grid { --cols: 3; }
+}
+
+/* A grid with a single card (Experience) stays a readable width on any screen */
+.info-grid.info-grid--single {
+  --cols: 1;
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Skills */
 .skill-card {
   background: rgba(255,255,255,0.55);
   border: 1px solid rgba(168, 152, 128, 0.35);
   border-radius: 20px;
-  padding: 22px 20px;
+  padding: 1.4rem 1.25rem;
   backdrop-filter: blur(6px);
   transition: all 0.25s ease;
 }
@@ -393,7 +459,7 @@ nav ul li:hover {
 .skill-card h3 {
   font-size: 1.1rem;
   font-weight: 700;
-  margin-bottom: 12px;
+  margin-bottom: 0.75rem;
   border-left: 3px solid var(--accent);
   padding-left: 12px;
   color: var(--text-dark);
@@ -406,7 +472,7 @@ nav ul li:hover {
 }
 
 .skill-card ul li {
-  margin-bottom: 8px;
+  margin-bottom: 0.5rem;
   padding-left: 16px;
   position: relative;
 }
@@ -419,20 +485,12 @@ nav ul li:hover {
   font-size: 0.85rem;
 }
 
-/* Projects grid */
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-  gap: 32px;
-  margin-top: 48px;
-  text-align: left;
-}
-
+/* Projects */
 .project-card {
   background: rgba(255,255,255,0.55);
   border: 1px solid rgba(168, 152, 128, 0.35);
   border-radius: 20px;
-  padding: 28px;
+  padding: 1.75rem;
   backdrop-filter: blur(6px);
   transition: all 0.3s ease;
 }
@@ -446,14 +504,14 @@ nav ul li:hover {
 
 .project-card h3 {
   font-size: 1.4rem;
-  margin-bottom: 10px;
+  margin-bottom: 0.6rem;
   color: var(--text-dark);
 }
 
 .project-card .tech {
   font-size: 0.8rem;
-  color: var(--accent);
-  margin-bottom: 14px;
+  color: var(--accent-text);
+  margin-bottom: 0.85rem;
   font-weight: 600;
   letter-spacing: 0.3px;
 }
@@ -462,12 +520,12 @@ nav ul li:hover {
   font-size: 0.9rem;
   color: var(--text-light);
   line-height: 1.65;
-  margin-bottom: 18px;
+  margin-bottom: 1.1rem;
 }
 
 .project-link {
   display: inline-block;
-  color: var(--accent);
+  color: var(--accent-text);
   text-decoration: none;
   font-weight: 600;
   font-size: 0.85rem;
@@ -480,57 +538,44 @@ nav ul li:hover {
   padding-bottom: 2px;
 }
 
-/* Education section */
-.education-content {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  flex-wrap: wrap;
-}
-
-.education-text {
-  flex: 2;
-  max-width: 700px;
-  text-align: left;
-}
-
-.education-item {
-  margin-bottom: 32px;
+/* Experience + Education cards */
+.info-card {
   background: rgba(255,255,255,0.4);
-  padding: 20px 25px;
+  padding: 1.4rem 1.6rem;
   border-radius: 20px;
   backdrop-filter: blur(4px);
   transition: 0.2s;
 }
 
-.education-item:hover {
+.info-card:hover {
   background: rgba(255,255,255,0.6);
 }
 
-.education-item h3 {
+.info-card h3 {
   font-size: 1.25rem;
   font-weight: 700;
   color: var(--text-dark);
 }
 
-.education-item .meta {
+.info-card .meta {
   font-size: 0.85rem;
-  color: var(--accent);
+  color: var(--accent-text);
   font-weight: 500;
-  margin-bottom: 8px;
+  margin: 0.25rem 0 0.5rem 0;
 }
 
-.education-item p {
+.info-card p {
   font-size: 0.9rem;
   color: var(--text-light);
-  margin-top: 6px;
+  margin-top: 0.4rem;
+  line-height: 1.65;
 }
 
 /* Certificate link */
 .cert-link {
   display: inline-block;
   margin-top: 8px;
-  color: var(--accent);
+  color: var(--accent-text);
   text-decoration: none;
   font-size: 0.85rem;
   font-weight: 500;
@@ -546,8 +591,8 @@ nav ul li:hover {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 28px;
-  margin-top: 38px;
+  gap: 1.75rem;
+  margin-top: 2.4rem;
 }
 
 .contact-links a, .contact-links span {
@@ -567,250 +612,165 @@ nav ul li:hover {
 }
 
 .contact-links a:hover {
-  color: var(--accent);
+  color: var(--accent-text);
   transform: translateY(-2px);
 }
 
 /* Footer */
 footer {
   text-align: center;
-  padding: 30px;
+  padding: 1.9rem;
   color: var(--text-light);
   font-size: 0.8rem;
   background: var(--sand-light);
   border-top: 1px solid rgba(168, 152, 128, 0.3);
 }
 
-/* Hamburger menu */
-.hamburger {
-  display: none;
-  font-size: 1.8rem;
-  background: none;
-  border: none;
-  color: var(--text-dark);
-  cursor: pointer;
-  z-index: 21;
+/* Keyboard focus */
+.arrow:focus-visible,
+.hamburger:focus-visible,
+.project-link:focus-visible,
+.cert-link:focus-visible,
+.contact-links a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition-duration: 0.01ms !important; }
+  html { scroll-behavior: auto; }
 }
 
 /* ========================================================
-   RESPONSIVE BREAKPOINTS
-   The carousel widget stays visible at every breakpoint below,
-   only shrinking in size — never display:none.
+   RESPONSIVE BREAKPOINTS (desktop-first, smaller screens override)
    ======================================================== */
 
-/* ---------- LARGE TABLET / NARROW DESKTOP (≤1100px) ---------- */
+/* ---------- SMALL LAPTOPS (≤1200px): tighten the nav ---------- */
+@media (max-width: 1200px) {
+  nav ul { gap: 1.25rem; }
+  nav ul li { letter-spacing: 1px; }
+}
+
+/* ---------- TABLET & BELOW (≤1100px): carousel moves under hero text ---------- */
 @media (max-width: 1100px) {
-  .carousel-widget {
-    width: 320px;
-    height: 220px;
-    right: 30px;
-    bottom: 36px;
+  :root {
+    --carousel-w: 20rem;
+    --carousel-h: 13.75rem;
+    --card-w: 11rem;
+    --card-h: 7.9rem;
+    --card-offset: 7.5rem;
   }
 
-  .card {
-    width: 178px;
-    height: 128px;
-  }
-
-  .card.left  { transform: translateX(-120px) scale(0.82); }
-  .card.right { transform: translateX(120px)  scale(0.82); }
-
-  .hero-left {
-    max-width: 520px;
-  }
-}
-
-/* ---------- TABLET (≤900px) ---------- */
-@media (max-width: 900px) {
   .hero {
-    padding: 90px 30px 50px 30px;
-    min-height: 85vh;
+    flex-direction: column;
     align-items: flex-start;
+    justify-content: center;
+    gap: 2rem;
+    min-height: 85vh;
+    padding-top: 7.5rem;
   }
 
-  .hero-left {
-    max-width: 100%;
-    padding-top: 20px;
-  }
+  .hero-left { max-width: 100%; }
 
-  .hero-left h2  { font-size: 36px; }
-  .hero-left .role  { font-size: 16px; }
-  .hero-left .stack { font-size: 12px; }
-  .project-description { font-size: 14px; }
-
-  /* Carousel remains visible, just scaled down to fit */
   .carousel-widget {
-    width: 280px;
-    height: 200px;
-    right: 20px;
-    bottom: 24px;
-  }
-
-  .card {
-    width: 150px;
-    height: 108px;
-  }
-
-  .card.left  { transform: translateX(-100px) scale(0.8); }
-  .card.right { transform: translateX(100px)  scale(0.8); }
-
-  .section { padding: 70px 36px; }
-
-  .section-carousel {
-    width: 340px;
-    height: 220px;
+    position: relative;
+    right: auto;
+    bottom: auto;
+    max-width: 100%;
+    margin: 0 auto;
   }
 }
 
-/* ---------- MOBILE MENU (≤700px) ---------- */
-@media (max-width: 700px) {
-  nav { padding: 14px 20px; }
-
+/* ---------- COLLAPSED NAV (≤1024px) ---------- */
+@media (max-width: 1024px) {
   .hamburger { display: block; }
 
   .nav-links {
     position: absolute;
-    top: 70px;
+    top: 100%;
     left: 0;
     width: 100%;
     background: rgba(245, 239, 230, 0.97);
     backdrop-filter: blur(12px);
     flex-direction: column;
     align-items: center;
-    gap: 22px;
-    padding: 28px 0;
+    gap: 1.4rem;
+    padding: 1.75rem 0;
     display: none;
     border-bottom: 1px solid rgba(168,152,128,0.4);
     z-index: 19;
   }
 
   .nav-links.active { display: flex; }
+}
 
-  .hero {
-    padding: 80px 20px 44px 20px;
-    min-height: 90vh;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
+/* ---------- PHONES (≤700px) ---------- */
+@media (max-width: 700px) {
+  :root {
+    --carousel-w: 20rem;
+    --carousel-h: 12.5rem;
+    --card-w: 9.5rem;
+    --card-h: 6.8rem;
+    --card-offset: 6.2rem;
   }
 
-  .hero-left h2 { font-size: 30px; }
+  nav h1 .education-image img { width: 2.75rem; height: 3.25rem; }
 
-  /* Carousel drops below the hero text on narrow phones instead of disappearing */
-  .carousel-widget {
-    position: relative;
-    right: auto;
-    bottom: auto;
-    width: 100%;
-    max-width: 320px;
-    height: 200px;
-    margin: 24px auto 0 auto;
-  }
-
-  .card.left  { transform: translateX(-100px) scale(0.8); }
-  .card.right { transform: translateX(100px)  scale(0.8); }
-
-  .section { padding: 60px 20px; }
-  .section h2 { font-size: 1.8rem; }
-
-  .about-text {
-    font-size: 0.92rem;
-    text-align: left;
-  }
-
-  .skills-grid { gap: 16px; }
-
-  .projects-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .project-card { padding: 22px 18px; }
-  .project-card h3 { font-size: 1.2rem; }
-
-  .education-text { max-width: 100%; }
+  .hero { min-height: 90vh; padding-top: 6.5rem; }
 
   .contact-links {
-    gap: 16px;
+    gap: 1rem;
     flex-direction: column;
     align-items: center;
   }
 
-  .section-carousel {
-    width: 300px;
-    height: 210px;
-  }
-
-  .card.active {
-    width: 170px;
-    height: 120px;
-  }
+  .info-card { padding: 1.2rem 1.1rem; }
+  .project-card { padding: 1.4rem 1.1rem; }
 }
 
-/* ---------- SMALL MOBILE (≤480px) ---------- */
+/* ---------- SMALL PHONES (≤480px) ---------- */
 @media (max-width: 480px) {
-  nav { padding: 12px 16px; }
-
-  .hero {
-    padding: 76px 16px 40px 16px;
-    min-height: 88vh;
+  :root {
+    --carousel-w: 16.25rem;
+    --carousel-h: 11.9rem;
+    --card-w: 9.4rem;
+    --card-h: 6.6rem;
+    --card-offset: 5.9rem;
   }
-
-  .hero-left h2 { font-size: 26px; }
-  .hero-left .role  { font-size: 14px; }
-  .project-description { font-size: 13px; }
-
-  .section { padding: 50px 16px; }
-  .section h2 { font-size: 1.6rem; }
-
-  .skills-grid { grid-template-columns: 1fr; }
-
-  .carousel-widget {
-    max-width: 260px;
-    height: 190px;
-  }
-
-  .section-carousel {
-    width: 260px;
-    height: 190px;
-  }
-
-  .card.active {
-    width: 150px;
-    height: 105px;
-  }
-
-  .card.left  { transform: translateX(-95px) scale(0.78); }
-  .card.right { transform: translateX(95px)  scale(0.78); }
 
   .carousel-description {
     font-size: 0.85rem;
-    padding: 8px 14px;
+    padding: 0.5rem 0.9rem;
+    border-radius: 24px;
   }
 
   .contact-links a,
-  .contact-links span {
-    font-size: 0.88rem;
-  }
+  .contact-links span { font-size: 0.88rem; }
 }
 
 /* ---------- VERY SMALL (≤360px) ---------- */
 @media (max-width: 360px) {
-  .carousel-widget {
-    max-width: 230px;
-    height: 170px;
+  :root {
+    --carousel-w: 14.4rem;
+    --carousel-h: 10.6rem;
+    --card-w: 8.1rem;
+    --card-h: 5.75rem;
+    --card-offset: 5.1rem;
   }
+}
 
-  .section-carousel {
-    width: 230px;
-    height: 170px;
+/* ---------- LARGE SCREENS ---------- */
+@media (min-width: 1600px) {
+  :root { --content-max: 80rem; }
+}
+
+@media (min-width: 2000px) {
+  :root {
+    --content-max: 84rem;
+    --carousel-w: 25rem;
+    --carousel-h: 15rem;
+    --card-w: 13.5rem;
+    --card-h: 9.5rem;
+    --card-offset: 9.8rem;
   }
-
-  .card.active {
-    width: 130px;
-    height: 92px;
-  }
-
-  .card.left  { transform: translateX(-82px) scale(0.76); }
-  .card.right { transform: translateX(82px)  scale(0.76); }
 }
