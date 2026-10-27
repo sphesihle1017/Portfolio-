@@ -6,34 +6,35 @@
 
   <!-- ===== SEO & META TAGS ===== -->
   <title>Sphesihle Shezi | Junior Software Developer Portfolio</title>
-  <meta name="description" content="Portfolio of Sphesihle Shezi – Junior Software Developer skilled in ASP.NET MVC, C#, SQL Server, and cloud databases. Explore projects, certificates, and contact info." />
-  <meta name="keywords" content="Sphesihle Shezi, software developer, portfolio, ASP.NET MVC, C#, SQL Server, Oracle Cloud, web developer, Junior developer , Sphesihle ,Junior Software Developers in Pietermaritzburg" />
+  <meta name="description" content="Portfolio of Sphesihle Shezi – Junior Software Developer and Software Developer Intern at SITA, skilled in ASP.NET MVC, C#, SQL Server, WordPress and cloud databases. Explore experience, projects, certificates, and contact info." />
+  <meta name="keywords" content="Sphesihle Shezi, software developer, portfolio, ASP.NET MVC, C#, SQL Server, Oracle Cloud, WordPress, web developer, Junior Software Developer, Software Developer Intern, SITA, Nelson Mandela University Graduate, Sphesihle, Junior Software Developers in Pietermaritzburg" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://sphesihlesportfolio.vercel.app/" />
 
   <!-- Open Graph / Social -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Sphesihle Shezi | Software Developer Portfolio" />
-  <meta property="og:description" content="Junior software developer with hands‑on experience in ASP.NET MVC, C#, SQL Server. View projects and skills." />
-  <meta property="og:image" content="https://https://sphesihlesportfolio.vercel.app/images/High_DA30796-047.jpg" />
-  <meta property="og:url" content="https://https://sphesihlesportfolio.vercel.app/" />
+  <meta property="og:title" content="Sphesihle Shezi | Junior Software Developer Portfolio" />
+  <meta property="og:description" content="Junior Software Developer and Software Developer Intern at SITA with hands‑on experience in ASP.NET MVC, C#, SQL Server and WordPress. View experience, projects and skills." />
+  <meta property="og:image" content="https://sphesihlesportfolio.vercel.app/images/High_DA30796-047.jpg" />
+  <meta property="og:url" content="https://sphesihlesportfolio.vercel.app/" />
   <meta property="og:site_name" content="Sphesihle Shezi Portfolio" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Sphesihle Shezi | Software Developer Portfolio" />
-  <meta name="twitter:description" content="Junior software developer with hands‑on experience in ASP.NET MVC, C#, SQL Server. View projects and skills." />
+  <meta name="twitter:title" content="Sphesihle Shezi | Junior Software Developer Portfolio" />
+  <meta name="twitter:description" content="Junior Software Developer and Software Developer Intern at SITA with hands‑on experience in ASP.NET MVC, C#, SQL Server and WordPress. View experience, projects and skills." />
   <meta name="twitter:image" content="https://sphesihlesportfolio.vercel.app/images/Sphesihle.jpeg" />
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-499HYF53QW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-499HYF53QW');
-</script>
-  
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-499HYF53QW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-499HYF53QW');
+  </script>
+
   <!-- Structured Data (JSON‑LD) – Person schema -->
   <script type="application/ld+json">
   {
@@ -42,7 +43,8 @@
     "name": "Sphesihle Shezi",
     "alternateName": "Sphesihle",
     "jobTitle": "Junior Software Developer",
-    "url": "https://sphesihlesportfolio.vercel.app.com",
+    "worksFor": { "@type": "Organization", "name": "SITA" },
+    "url": "https://sphesihlesportfolio.vercel.app",
     "image": "https://sphesihlesportfolio.vercel.app/images/High_DA30796-047.jpg",
     "sameAs": [
       "https://linkedin.com/in/sphesihleshezi1017",
@@ -54,12 +56,13 @@
       "C#",
       "SQL Server",
       "Oracle Cloud",
-      "JavaScript"
+      "JavaScript",
+      "WordPress"
     ],
-    "description": "Junior software developer with a Diploma in IT (Software Development) and experience building database-driven web applications."
+    "description": "Junior software developer and software developer intern at SITA with a Diploma in IT (Software Development) and experience building database-driven web applications."
   }
   </script>
-  
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
   <link rel="stylesheet" href="style.css" />
@@ -82,16 +85,15 @@
   <!--  NAVIGATION -->
   <nav>
     <h1>
-      <!-- semantic text for screen readers + search engines, visually hidden via CSS if needed -->
-      
       <div class="education-image">
         <img src="images/High_DA30796-047.jpg" alt="Sphesihle Shezi" />
       </div>
     </h1>
-    <button class="hamburger" aria-label="Menu">&#9776;</button>
-    <ul class="nav-links">
+    <button class="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">&#9776;</button>
+    <ul class="nav-links" id="navLinks">
       <li onclick="go('hero')">Home</li>
       <li onclick="go('aboutSkills')">About & Skills</li>
+      <li onclick="go('experience')">Experience</li>
       <li onclick="go('projects')">Projects</li>
       <li onclick="go('education')">Education</li>
       <li onclick="go('certificates')">Certificates</li>
@@ -104,16 +106,16 @@
     <div class="hero-left">
       <h2>Hey, I'm Sphesihle Shezi</h2>
       <div class="role" id="dynamicRole">Junior Software Developer</div>
-      <div class="stack" id="dynamicStack">ASP.NET MVC • C# • SQL Server • JavaScript • HTML/CSS</div>
+      <div class="stack" id="dynamicStack">ASP.NET MVC • C# • SQL Server • JavaScript • HTML/CSS • WordPress</div>
       <p class="project-description" id="dynamicDescription">I build innovative, database-driven web applications with a focus on clean architecture and user experience. <b>
       See my projects below to explore my work and skills in action.
       </b></p>
     </div>
 
     <div class="carousel-widget" id="heroCarousel">
-      <button class="arrow left-arrow" onclick="moveHero(-1)">&#10094;</button>
+      <button class="arrow left-arrow" onclick="moveHero(-1)" aria-label="Previous project">&#10094;</button>
       <div class="carousel" id="heroCarouselInner"></div>
-      <button class="arrow right-arrow" onclick="moveHero(1)">&#10095;</button>
+      <button class="arrow right-arrow" onclick="moveHero(1)" aria-label="Next project">&#10095;</button>
     </div>
   </div>
 
@@ -121,7 +123,8 @@
   <section class="section" id="aboutSkills">
     <h2>About & Skills</h2>
     <div class="about-text">
-      Junior Developer holding a Diploma in Information Technology (Software Development) and hands-on experience building database-driven systems using SQL Server, C#, and ASP.NET. Oracle Cloud Database Certified with a strong foundation in databases, scripting (Python, C#, JavaScript), and system logic. Eager to apply analytical thinking and problem-solving to server monitoring, infrastructure support, and IT operations.
+      Junior Software Developer holding a Diploma in Information Technology (Software Development) and hands-on experience building database-driven systems using SQL Server, C#, and ASP.NET.
+      Oracle Cloud Database Certified with a strong foundation in databases, scripting (Python, C#, JavaScript), and system logic. Eager to apply analytical thinking and problem-solving to server monitoring, infrastructure support, and IT operations.
     </div>
 
     <div class="skills-grid">
@@ -138,6 +141,7 @@
         <ul>
           <li>C#, JavaScript, Python, SQL</li>
           <li>HTML5, CSS3</li>
+          <li>WordPress</li>
         </ul>
       </div>
       <div class="skill-card">
@@ -163,6 +167,27 @@
           <li>Time Management, Adaptability</li>
         </ul>
       </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE SECTION -->
+  <section class="section" id="experience">
+    <h2>Experience</h2>
+    <div class="info-grid">
+     
+      <article class="info-card">
+        <h3>Data Capturer & Freelance developer</h3>
+        <div class="meta">Oxior Civil Enterprises | June 2026 – August 2026</div>
+        <p><li>Capturing and maintaining business data accurately and on time, with attention to detail and data integrity. 
+       
+         <br><li> Desgined and built a user friendly cross-platform web application for Oxior Civil Enterprises Pty ltd
+      </article>
+       <article class="info-card">
+        <h3>Software Developer Intern</h3>
+        <div class="meta">SITA SOC LTD | September 2026 – Present</div>
+        <!-- Replace the line below with your actual duties / achievements at SITA -->
+        <p>Engaged with Senior developers & Team members to provide IT solutions to the government sector.</p>
+      </article>
     </div>
   </section>
 
@@ -194,18 +219,16 @@
   <!-- EDUCATION SECTION -->
   <section class="section" id="education">
     <h2>Education</h2>
-    <div class="education-content">
-      <div class="education-text">
-        <div class="education-item">
-          <h3>Diploma in Information Technology (Software Development)</h3>
-          <div class="meta">Nelson Mandela University | 2022 – 2025 | Gqeberha</div>
-          <p>Distinctions: Development Software III (C#), Information Systems 1A, Systems Software: IT Essentials, Project Best Practices</p>
-        </div>
-        <div class="education-item">
-          <h3>Matric (National Senior Certificate)</h3>
-          <div class="meta">Nomaswazi High School | 2020 | Pietermaritzburg</div>
-        </div>
-      </div>
+    <div class="info-grid">
+      <article class="info-card">
+        <h3>Diploma in Information Technology (Software Development)</h3>
+        <div class="meta">Nelson Mandela University | 2022 – 2025 | Gqeberha</div>
+        <p>Distinctions: Development Software III (C#), Information Systems 1A, Systems Software: IT Essentials, Project Best Practices</p>
+      </article>
+      <article class="info-card">
+        <h3>Matric (National Senior Certificate)</h3>
+        <div class="meta">Nomaswazi High School | 2020 | Pietermaritzburg</div>
+      </article>
     </div>
   </section>
 
@@ -214,9 +237,9 @@
     <h2>Certificates</h2>
 
     <div class="section-carousel" id="certsCarousel">
-      <button class="arrow left-arrow" onclick="moveCerts(-1)">&#10094;</button>
+      <button class="arrow left-arrow" onclick="moveCerts(-1)" aria-label="Previous certificate">&#10094;</button>
       <div class="carousel" id="certsCarouselInner"></div>
-      <button class="arrow right-arrow" onclick="moveCerts(1)">&#10095;</button>
+      <button class="arrow right-arrow" onclick="moveCerts(1)" aria-label="Next certificate">&#10095;</button>
     </div>
     <div class="carousel-description" id="certsDescription">
       Oracle Cloud Database Professional 2025<br/>
@@ -240,9 +263,9 @@
       <span><i class="fas fa-map-marker-alt"></i> Johannesburg, Gauteng / Pietermaritzburg, KwaZulu Natal</span>
       <span><i class="fas fa-truck"></i> Code 10</span>
     </div>
-</section>
+  </section>
 
-  <footer>© 2025 Sphesihle Shezi</footer>
+  <footer>© 2026 Sphesihle Shezi</footer>
 
   <script src="script.js"></script>
 </body>
