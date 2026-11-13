@@ -120,6 +120,47 @@ function go(sectionId) {
   closeMenu(); // close the mobile/tablet menu after choosing a section
 }
 
+// ---------- INTRO LOADER ----------
+// 1) The laptop spins once  2) "Welcome" + name fade in  3) loader slides away
+// Runs immediately (not inside the "load" event) so it can't miss the end of the
+// spin animation when images take a while to download.
+(function initIntroLoader() {
+  const loader = document.getElementById('intro-loader');
+  if (!loader) return;
+
+  const spinEl = loader.querySelector('.inner');
+  let welcomeShown = false;
+  let exiting = false;
+
+  function exitLoader() {
+    if (exiting) return;
+    exiting = true;
+    loader.classList.add('show');
+    loader.classList.add('exit');
+
+    loader.addEventListener('animationend', (e) => {
+      if (e.target !== loader) return; // ignore animations bubbling up from children
+      loader.style.display = 'none';
+      document.body.classList.remove('loading');
+      document.body.classList.add('revealed');
+    });
+  }
+
+  function showWelcome() {
+    if (welcomeShown) return;
+    welcomeShown = true;
+    loader.classList.add('show');
+    setTimeout(exitLoader, 2600); // how long the welcome text stays on screen
+  }
+
+  spinEl.addEventListener('animationend', (e) => {
+    if (e.target === spinEl && e.animationName === 'rotate') showWelcome();
+  });
+
+  // Safety net in case the animation event never fires
+  setTimeout(showWelcome, 9000);
+})();
+
 // INITIALISE
 window.addEventListener("load", ()=>{
   renderHero();
@@ -137,16 +178,4 @@ window.addEventListener("load", ()=>{
   window.addEventListener('resize', () => {
     if (window.innerWidth > 1024) closeMenu();
   });
-
-  const loader = document.getElementById('intro-loader');
-
-  setTimeout(() => {
-    loader.classList.add('exit');
-
-    loader.addEventListener('animationend', () => {
-      loader.style.display = 'none';
-      document.body.classList.remove('loading');
-      document.body.classList.add('revealed');
-    }, { once: true });
-  }, 3000);
 });
