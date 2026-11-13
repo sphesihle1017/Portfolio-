@@ -35,7 +35,7 @@ body.loading {
   z-index: 1;
   left: 0;
   right: 0;
-  top: calc(50% + 150px);
+  top: calc(50% + 100px);
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -92,7 +92,7 @@ body.loading {
   position: absolute;
   z-index: 1;
   left: 50%;
-  bottom: 8vh;
+  bottom: 12vh;
   transform: translateX(-50%);
   width: min(280px, 75vw);
   height: 2px;
@@ -124,7 +124,7 @@ body.loading {
   position: absolute;
   left: 50%;
   top: 50%;
-  margin: -85px 0 0 -78px;
+  margin: -135px 0 0 -78px;
   perspective: 500px;
   scale: 1.5; /* make the laptop bigger; set to 1 for original size */
 }
@@ -377,7 +377,7 @@ body.loading {
 /* Small screens: keep the laptop and text from colliding */
 @media (max-width: 480px) {
   .macbook { scale: 1.2; }
-  .loader-text { top: calc(50% + 120px); }
+  .loader-text { top: calc(50% + 70px); }
 }
 
 /* ---- EXIT ANIMATIONS ---- */
