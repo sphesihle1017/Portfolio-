@@ -1,8 +1,11 @@
-
-
 /* Prevent scroll during loader */
 body.loading {
   overflow: hidden;
+}
+
+/* Spin duration: change this one value to speed up / slow down the laptop */
+#intro-loader {
+  --spin: 5s;
 }
 
 /* The full-screen loader overlay */
@@ -13,10 +16,7 @@ body.loading {
   background-image: url('images/Background.jpg');
   background-size: cover;
   background-position: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  overflow: hidden;
   will-change: transform, opacity;
 }
 
@@ -25,44 +25,37 @@ body.loading {
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(30, 25, 20, 0.62);
+  background: rgba(30, 25, 20, 0.72);
   z-index: 0;
 }
 
-/* Loader content container */
-.loader-content {
-  position: relative;
+/* ---- TEXT UNDER THE LAPTOP ---- */
+.loader-text {
+  position: absolute;
   z-index: 1;
+  left: 0;
+  right: 0;
+  top: calc(50% + 150px);
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 18px;
-  animation: loaderFadeIn 0.8s ease forwards;
+  gap: 10px;
+  padding: 0 16px;
 }
 
-@keyframes loaderFadeIn {
-  from { opacity: 0; transform: translateY(22px); }
-  to   { opacity: 1; transform: translateY(0); }
+.loader-welcome {
+  font-size: clamp(1rem, 3vw, 1.4rem);
+  font-weight: 300;
+  color: var(--accent);
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  padding-left: 0.5em; /* balances the trailing letter-spacing so it stays centred */
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
 }
 
-/* Profile photo ring */
-.loader-avatar {
-  width: 88px;
-  height: 88px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid var(--accent);
-  box-shadow: 0 0 0 6px rgba(184, 149, 106, 0.25), 0 0 28px rgba(184,149,106,0.35);
-  animation: avatarPulse 2s ease-in-out infinite;
-}
-
-@keyframes avatarPulse {
-  0%, 100% { box-shadow: 0 0 0 6px rgba(184, 149, 106, 0.25), 0 0 28px rgba(184,149,106,0.35); }
-  50%       { box-shadow: 0 0 0 10px rgba(184, 149, 106, 0.12), 0 0 45px rgba(184,149,106,0.5); }
-}
-
-/* Name heading */
 .loader-name {
   font-size: clamp(1.8rem, 5vw, 3.2rem);
   font-weight: 700;
@@ -70,9 +63,11 @@ body.loading {
   letter-spacing: 2px;
   text-shadow: 0 2px 16px rgba(0,0,0,0.55);
   line-height: 1.1;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.9s ease 0.35s, transform 0.9s ease 0.35s;
 }
 
-/* Subtitle */
 .loader-role {
   font-size: clamp(0.85rem, 2vw, 1.1rem);
   font-weight: 400;
@@ -80,23 +75,30 @@ body.loading {
   letter-spacing: 4px;
   text-transform: uppercase;
   opacity: 0;
-  animation: fadeUp 0.7s ease 0.5s forwards;
+  transform: translateY(10px);
+  transition: opacity 0.9s ease 0.7s, transform 0.9s ease 0.7s;
 }
 
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: translateY(0); }
+/* JS adds .show once the laptop has finished spinning */
+#intro-loader.show .loader-welcome,
+#intro-loader.show .loader-name,
+#intro-loader.show .loader-role {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-/* Thin animated progress bar */
+/* ---- PROGRESS BAR (fills while the laptop spins) ---- */
 .loader-bar-track {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  bottom: 8vh;
+  transform: translateX(-50%);
   width: min(280px, 75vw);
   height: 2px;
   background: rgba(255,255,255,0.18);
   border-radius: 99px;
   overflow: hidden;
-  opacity: 0;
-  animation: fadeUp 0.5s ease 0.9s forwards;
 }
 
 .loader-bar-fill {
@@ -104,7 +106,7 @@ body.loading {
   width: 0%;
   background: linear-gradient(90deg, var(--accent), #e0c49a);
   border-radius: 99px;
-  animation: barFill 2.2s cubic-bezier(0.4, 0, 0.2, 1) 1s forwards;
+  animation: barFill var(--spin) cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 @keyframes barFill {
@@ -112,6 +114,270 @@ body.loading {
   60%  { width: 80%; }
   85%  { width: 92%; }
   100% { width: 100%; }
+}
+
+/* ---- MACBOOK (plays once) ---- */
+.macbook {
+  z-index: 1;
+  width: 150px;
+  height: 96px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -85px 0 0 -78px;
+  perspective: 500px;
+  scale: 1.5; /* make the laptop bigger; set to 1 for original size */
+}
+
+.shadow {
+  position: absolute;
+  width: 60px;
+  height: 0px;
+  left: 40px;
+  top: 160px;
+  transform: rotateX(80deg) rotateY(0deg) rotateZ(0deg);
+  box-shadow: 0 0 60px 40px rgba(0,0,0,0.3);
+  animation: shadow var(--spin) ease 1 forwards;
+}
+
+.inner {
+  z-index: 20;
+  position: absolute;
+  width: 150px;
+  height: 96px;
+  left: 0;
+  top: 0;
+  transform-style: preserve-3d;
+  transform: rotateX(-20deg) rotateY(0deg) rotateZ(0deg);
+  animation: rotate var(--spin) ease 1 forwards;
+}
+
+.screen {
+  width: 150px;
+  height: 96px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  border-radius: 7px;
+  background: #ddd;
+  transform-style: preserve-3d;
+  transform-origin: 50% 93px;
+  transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  animation: lid-screen var(--spin) ease 1 forwards;
+  background-image: linear-gradient(45deg, rgba(0,0,0,0.34) 0%, rgba(0,0,0,0) 100%);
+  background-position: left bottom;
+  background-size: 300px 300px;
+  box-shadow: inset 0 3px 7px rgba(255,255,255,0.5);
+}
+
+.screen .face-one {
+  width: 150px;
+  height: 96px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  border-radius: 7px;
+  background: #d3d3d3;
+  transform: translateZ(2px);
+  background-image: linear-gradient(45deg, rgba(0,0,0,0.24) 0%, rgba(0,0,0,0) 100%);
+}
+
+.screen .face-one .camera {
+  width: 3px;
+  height: 3px;
+  border-radius: 100%;
+  background: #000;
+  position: absolute;
+  left: 50%;
+  top: 4px;
+  margin-left: -1.5px;
+}
+
+.screen .face-one .display {
+  width: 130px;
+  height: 74px;
+  margin: 10px;
+  background-color: #000;
+  background-size: 100% 100%;
+  border-radius: 1px;
+  position: relative;
+  box-shadow: inset 0 0 2px rgba(0,0,0,1);
+}
+
+.screen .face-one .display .shade {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 130px;
+  height: 74px;
+  background: linear-gradient(-135deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.1) 47%, rgba(255,255,255,0) 48%);
+  animation: screen-shade var(--spin) ease 1 forwards;
+  background-size: 300px 200px;
+  background-position: 0px 0px;
+}
+
+.screen .face-one span {
+  position: absolute;
+  top: 85px;
+  left: 57px;
+  font-size: 6px;
+  color: #666;
+}
+
+.macbody {
+  width: 150px;
+  height: 96px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  border-radius: 7px;
+  background: #cbcbcb;
+  transform-style: preserve-3d;
+  transform-origin: 50% bottom;
+  transform: rotateX(-90deg);
+  animation: lid-macbody var(--spin) ease 1 forwards;
+  background-image: linear-gradient(45deg, rgba(0,0,0,0.24) 0%, rgba(0,0,0,0) 100%);
+}
+
+.macbody .face-one {
+  width: 150px;
+  height: 96px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  border-radius: 7px;
+  transform-style: preserve-3d;
+  background: #dfdfdf;
+  animation: lid-keyboard-area var(--spin) ease 1 forwards;
+  transform: translateZ(-2px);
+  background-image: linear-gradient(30deg, rgba(0,0,0,0.24) 0%, rgba(0,0,0,0) 100%);
+}
+
+.macbody .touchpad {
+  width: 40px;
+  height: 31px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border-radius: 4px;
+  margin: -44px 0 0 -18px;
+  background: #cdcdcd;
+  background-image: linear-gradient(30deg, rgba(0,0,0,0.24) 0%, rgba(0,0,0,0) 100%);
+  box-shadow: inset 0 0 3px #888;
+}
+
+.macbody .keyboard {
+  width: 130px;
+  height: 45px;
+  position: absolute;
+  left: 7px;
+  top: 41px;
+  border-radius: 4px;
+  transform-style: preserve-3d;
+  background: #cdcdcd;
+  background-image: linear-gradient(30deg, rgba(0,0,0,0.24) 0%, rgba(0,0,0,0) 100%);
+  box-shadow: inset 0 0 3px #777;
+  padding: 0 0 0 2px;
+}
+
+.keyboard .key {
+  width: 6px;
+  height: 6px;
+  background: #444;
+  float: left;
+  margin: 1px;
+  transform: translateZ(-2px);
+  border-radius: 2px;
+  box-shadow: 0 -2px 0 #222;
+  animation: keys var(--spin) ease 1 forwards;
+}
+
+.key.space { width: 45px; }
+.key.f { height: 3px; }
+
+.macbody .pad {
+  width: 5px;
+  height: 5px;
+  background: #333;
+  border-radius: 100%;
+  position: absolute;
+}
+.pad.one   { left: 20px;  top: 20px; }
+.pad.two   { right: 20px; top: 20px; }
+.pad.three { right: 20px; bottom: 20px; }
+.pad.four  { left: 20px;  bottom: 20px; }
+
+@keyframes rotate {
+  0%   { transform: rotateX(-20deg) rotateY(0deg)   rotateZ(0deg); }
+  5%   { transform: rotateX(-20deg) rotateY(-20deg) rotateZ(0deg); }
+  20%  { transform: rotateX(30deg)  rotateY(200deg) rotateZ(0deg); }
+  25%  { transform: rotateX(-60deg) rotateY(150deg) rotateZ(0deg); }
+  60%  { transform: rotateX(-20deg) rotateY(130deg) rotateZ(0deg); }
+  65%  { transform: rotateX(-20deg) rotateY(120deg) rotateZ(0deg); }
+  80%  { transform: rotateX(-20deg) rotateY(375deg) rotateZ(0deg); }
+  85%  { transform: rotateX(-20deg) rotateY(357deg) rotateZ(0deg); }
+  87%  { transform: rotateX(-20deg) rotateY(360deg) rotateZ(0deg); }
+  100% { transform: rotateX(-20deg) rotateY(360deg) rotateZ(0deg); }
+}
+
+@keyframes lid-screen {
+  0%   { transform: rotateX(0deg);   background-position: left bottom; }
+  5%   { transform: rotateX(50deg);  background-position: left bottom; }
+  20%  { transform: rotateX(-90deg); background-position: -150px top; }
+  25%  { transform: rotateX(15deg);  background-position: left bottom; }
+  30%  { transform: rotateX(-5deg);  background-position: right top; }
+  38%  { transform: rotateX(5deg);   background-position: right top; }
+  48%  { transform: rotateX(0deg);   background-position: right top; }
+  90%  { transform: rotateX(0deg);   background-position: right top; }
+  100% { transform: rotateX(0deg);   background-position: right center; }
+}
+
+@keyframes lid-macbody {
+  0%, 50%, 100% { transform: rotateX(-90deg); }
+}
+
+@keyframes lid-keyboard-area {
+  0%   { background-color: #dfdfdf; }
+  50%  { background-color: #bbb; }
+  100% { background-color: #dfdfdf; }
+}
+
+@keyframes screen-shade {
+  0%   { background-position: -20px 0px; }
+  5%   { background-position: -40px 0px; }
+  20%  { background-position: 200px 0; }
+  50%  { background-position: -200px 0; }
+  80%  { background-position: 0px 0px; }
+  85%  { background-position: -30px 0; }
+  90%  { background-position: -20px 0; }
+  100% { background-position: -20px 0px; }
+}
+
+@keyframes keys {
+  0%   { box-shadow: 0 -2px 0 #222; }
+  5%   { box-shadow: 1px -1px 0 #222; }
+  20%  { box-shadow: -1px 1px 0 #222; }
+  25%  { box-shadow: -1px 1px 0 #222; }
+  60%  { box-shadow: -1px 1px 0 #222; }
+  80%  { box-shadow: 0 -2px 0 #222; }
+  85%  { box-shadow: 0 -2px 0 #222; }
+  87%  { box-shadow: 0 -2px 0 #222; }
+  100% { box-shadow: 0 -2px 0 #222; }
+}
+
+@keyframes shadow {
+  0%   { transform: rotateX(80deg) rotateY(0deg)   rotateZ(0deg);   box-shadow: 0 0 60px 40px rgba(0,0,0,0.3); }
+  5%   { transform: rotateX(80deg) rotateY(10deg)  rotateZ(0deg);   box-shadow: 0 0 60px 40px rgba(0,0,0,0.3); }
+  20%  { transform: rotateX(30deg) rotateY(-20deg) rotateZ(-20deg); box-shadow: 0 0 50px 30px rgba(0,0,0,0.3); }
+  25%  { transform: rotateX(80deg) rotateY(-20deg) rotateZ(50deg);  box-shadow: 0 0 35px 15px rgba(0,0,0,0.1); }
+  60%  { transform: rotateX(80deg) rotateY(0deg)   rotateZ(-50deg) translateX(30px); box-shadow: 0 0 60px 40px rgba(0,0,0,0.3); }
+  100% { box-shadow: 0 0 60px 40px rgba(0,0,0,0.3); }
+}
+
+/* Small screens: keep the laptop and text from colliding */
+@media (max-width: 480px) {
+  .macbook { scale: 1.2; }
+  .loader-text { top: calc(50% + 120px); }
 }
 
 /* ---- EXIT ANIMATIONS ---- */
